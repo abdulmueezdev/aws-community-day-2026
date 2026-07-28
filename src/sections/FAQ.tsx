@@ -1,0 +1,66 @@
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronDown } from 'lucide-react';
+import { defaultSiteData } from '../data/siteData';
+import { NeoBadge } from '../components/NeoBadge';
+import { NeoCard } from '../components/NeoCard';
+import { cn } from '../lib/utils';
+
+export function FAQ() {
+  const { faqs } = defaultSiteData;
+  const visibleFaqs = faqs.filter(f => f.isPublished).sort((a, b) => a.displayOrder - b.displayOrder);
+
+  return (
+    <section id="faq" className="py-24 px-6 bg-secondary border-b-[3px] border-black">
+      <div className="max-w-4xl mx-auto flex flex-col items-center">
+        
+        <NeoBadge variant="primary" className="mb-6">
+          GOT QUESTIONS?
+        </NeoBadge>
+        
+        <h2 className="font-heading font-black text-4xl md:text-5xl uppercase leading-tight mb-12 text-center">
+          FREQUENTLY ASKED QUESTIONS
+        </h2>
+
+        <div className="w-full flex flex-col gap-4">
+          {visibleFaqs.map((faq, index) => (
+            <FAQItem key={faq.id} faq={faq} defaultOpen={index === 0} />
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+function FAQItem({ faq, defaultOpen = false }: { faq: any, defaultOpen?: boolean }) {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+
+  return (
+    <NeoCard className="p-0 overflow-hidden cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
+      <div className="p-6 flex items-center justify-between gap-4 select-none">
+        <h3 className="font-heading font-semibold text-base md:text-lg">
+          {faq.question}
+        </h3>
+        <ChevronDown className={cn("w-6 h-6 flex-shrink-0 transition-transform duration-300", isOpen && "rotate-180")} />
+      </div>
+      
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <div className="px-6 pb-6 pt-0 font-body text-textSecondary border-t-[3px] border-black mt-2">
+              <div className="pt-4">
+                {faq.answer}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </NeoCard>
+  );
+}
