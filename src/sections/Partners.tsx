@@ -11,7 +11,7 @@ export function Partners() {
 
   return (
     <section id="partners" className="bg-cream border-b-[3px] border-black">
-      <div className="max-w-7xl mx-auto px-4 pb-20 pt-10">
+      <div className="max-w-7xl mx-auto px-4 pb-20 pt-20">
         {/* Section Header */}
         <div className="text-center mb-12">
           <span className="inline-block px-4 py-1 bg-accent border-[3px] border-black font-heading text-xs font-bold uppercase tracking-wider mb-4">

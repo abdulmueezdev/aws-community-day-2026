@@ -13,7 +13,7 @@ export function FAQ() {
 
   return (
     <section id="faq" className="pb-24 px-6 bg-secondary border-b-[3px] border-black">
-      <div className="max-w-4xl mx-auto flex flex-col items-center pt-10">
+      <div className="max-w-4xl mx-auto flex flex-col items-center pt-20">
         
         <NeoBadge variant="primary" className="mb-6">
           GOT QUESTIONS?
