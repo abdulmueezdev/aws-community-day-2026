@@ -22,10 +22,13 @@ const OrganizersManager = lazy(() => import('./admin/pages/OrganizersManager').t
 const VenueEditor = lazy(() => import('./admin/pages/VenueEditor').then(m => ({ default: m.VenueEditor })));
 const Settings = lazy(() => import('./admin/pages/Settings').then(m => ({ default: m.Settings })));
 
+import { SiteDataProvider } from './context/SiteDataContext';
+
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
+    <SiteDataProvider>
+      <BrowserRouter>
+        <Routes>
         {/* Public Site */}
         <Route path="/" element={
           <ReactLenis root options={{ lerp: 0.1, smoothWheel: true }}>
@@ -59,7 +62,8 @@ function App() {
           <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+      </BrowserRouter>
+    </SiteDataProvider>
   );
 }
 

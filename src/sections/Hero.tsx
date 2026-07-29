@@ -1,4 +1,4 @@
-import { defaultSiteData } from '../data/siteData';
+import { useSiteData } from '../context/SiteDataContext';
 import { NeoButton } from '../components/NeoButton';
 import { NeoCard } from '../components/NeoCard';
 import { ScrollReveal } from '../components/ScrollReveal';
@@ -6,7 +6,8 @@ import { useCountdown } from '../hooks/useCountdown';
 import { SkiperCrowd } from '../components/SkiperCrowd';
 
 export function Hero() {
-  const { event } = defaultSiteData;
+  const { siteData } = useSiteData();
+  const { event } = siteData;
   const timeLeft = useCountdown(event.countdownTarget);
 
   const formatNumber = (num: number) => num.toString().padStart(2, '0');

@@ -29,7 +29,9 @@ export function Speakers() {
             </p>
   
             {panelSpeaker && (
-              <SpeakerCard speaker={panelSpeaker} isLarge />
+              <div className="flex-1">
+                <SpeakerCard speaker={panelSpeaker} isLarge />
+              </div>
             )}
           </div>
         </ScrollReveal>
@@ -57,8 +59,8 @@ export function Speakers() {
 
 function SpeakerCard({ speaker, isLarge = false }: { speaker: any, isLarge?: boolean }) {
   return (
-    <div className={`bg-white border-[3px] border-black shadow-neo rounded-none overflow-hidden hover:-translate-y-1 hover:shadow-neo-hover transition-transform flex flex-col ${isLarge ? 'max-w-sm' : ''}`}>
-      <div className={`relative ${isLarge ? 'h-72' : 'h-48'} w-full border-b-[3px] border-black bg-gray-200`}>
+    <div className={`bg-white border-[3px] border-black shadow-neo rounded-none overflow-hidden hover:-translate-y-1 hover:shadow-neo-hover transition-transform flex flex-col h-full ${isLarge ? 'max-w-sm' : ''}`}>
+      <div className={`relative ${isLarge ? 'flex-1 min-h-[280px]' : 'h-48'} w-full border-b-[3px] border-black bg-gray-200 overflow-hidden`}>
         <img 
           src={speaker.photoUrl} 
           alt={speaker.name} 

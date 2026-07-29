@@ -3,18 +3,34 @@ import { NeoCard } from '../../components/NeoCard';
 import { NeoInput } from '../../components/NeoInput';
 import { ExportConfig } from '../components/ExportConfig';
 import { defaultSiteData } from '../../data/siteData';
+import { useSiteData } from '../../context/SiteDataContext';
 
 export function HeroEditor() {
-  const [heroData, setHeroData] = useState(defaultSiteData.event);
+  const { siteData, updateSiteData, isOverride, resetToDefaults } = useSiteData();
+  const [heroData, setHeroData] = useState(siteData.event);
   
   const handleUpdate = (field: keyof typeof heroData, value: string | boolean) => {
     setHeroData(prev => ({ ...prev, [field]: value }));
+    updateSiteData({ event: { ...heroData, [field]: value } as any });
   };
 
-  const currentConfig = { ...defaultSiteData, event: heroData };
+  const currentConfig = { ...siteData, event: heroData };
 
   return (
     <div className="flex flex-col gap-8">
+      {isOverride && (
+        <div className="flex justify-end">
+          <button
+            onClick={() => {
+              resetToDefaults();
+              setHeroData(defaultSiteData.event);
+            }}
+            className="px-4 py-2 bg-danger text-white border-[3px] border-black shadow-neo-sm font-heading text-xs uppercase rounded-none hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
+          >
+            Reset to Defaults
+          </button>
+        </div>
+      )}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="flex flex-col gap-8">
           <NeoCard className="bg-white p-6">
