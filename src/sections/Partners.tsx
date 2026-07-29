@@ -1,9 +1,8 @@
 import { defaultSiteData } from '../data/siteData';
-import { NeoCard } from '../components/NeoCard';
+
 import { NeoBadge } from '../components/NeoBadge';
 import { ScrollReveal } from '../components/ScrollReveal';
-import { StaggerContainer } from '../components/StaggerContainer';
-import { StaggerItem } from '../components/StaggerItem';
+import { PartnerMarquee } from '../components/PartnerMarquee';
 
 export function Partners() {
   const { partners } = defaultSiteData;
@@ -24,26 +23,7 @@ export function Partners() {
           </h2>
         </ScrollReveal>
 
-        <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-6 w-full">
-          {visiblePartners.map((partner) => (
-            <StaggerItem key={partner.id}>
-              <NeoCard className="flex flex-col items-center justify-center min-h-[120px] p-4">
-                <a href={partner.websiteUrl} target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-center">
-                  <img 
-                    src={partner.logoUrl} 
-                    alt={partner.name} 
-                    width="300"
-                    height="150"
-                    className="w-full max-w-[150px] h-auto object-contain rounded-none grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </a>
-                {partner.tagline && (
-                  <p className="font-mono text-xs mt-4 font-bold uppercase">{partner.tagline}</p>
-                )}
-              </NeoCard>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
+        <PartnerMarquee partners={visiblePartners} />
 
       </div>
     </section>

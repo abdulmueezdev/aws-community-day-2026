@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { useState, useEffect, useCallback } from 'react';
 import { NeoCard } from './NeoCard';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { Organizer } from '../data/siteData';
 
 interface CardFanCarouselProps {
@@ -34,9 +35,30 @@ export function CardFanCarousel({ organizers }: CardFanCarouselProps) {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
+    <div className="w-full max-w-4xl mx-auto flex flex-col items-center relative">
+      {/* Navigation Arrows */}
+      <div className="absolute left-0 md:left-4 top-1/2 -translate-y-1/2 z-50">
+        <button 
+          onClick={prev}
+          className="p-2 md:p-3 bg-secondary border-[3px] border-black shadow-neo hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neo-sm active:translate-x-[2px] active:translate-y-[2px]"
+          aria-label="Previous organizer"
+        >
+          <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-black" />
+        </button>
+      </div>
+
+      <div className="absolute right-0 md:right-4 top-1/2 -translate-y-1/2 z-50">
+        <button 
+          onClick={next}
+          className="p-2 md:p-3 bg-secondary border-[3px] border-black shadow-neo hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neo-sm active:translate-x-[2px] active:translate-y-[2px]"
+          aria-label="Next organizer"
+        >
+          <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-black" />
+        </button>
+      </div>
+
       <div 
-        className="relative w-full h-[500px] flex items-center justify-center"
+        className="relative w-full h-[440px] flex items-center justify-center"
         style={{ perspective: '1200px' }}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
@@ -58,7 +80,7 @@ export function CardFanCarousel({ organizers }: CardFanCarouselProps) {
           return (
             <motion.div
               key={organizer.id}
-              className="absolute w-[280px] cursor-pointer"
+              className="absolute w-[220px] md:w-[260px] cursor-pointer"
               initial={false}
               animate={{
                 x: xOffset,
@@ -76,7 +98,7 @@ export function CardFanCarousel({ organizers }: CardFanCarouselProps) {
               onClick={() => setCurrentIndex(index)}
             >
               <NeoCard className="flex flex-col text-center p-0 overflow-hidden bg-white">
-                <div className="w-full h-48 border-b-[3px] border-black bg-gray-100">
+                <div className="w-full h-[220px] md:h-[260px] border-b-[3px] border-black bg-gray-100">
                   <img 
                     src={organizer.photoUrl} 
                     alt={organizer.name}
@@ -86,10 +108,10 @@ export function CardFanCarousel({ organizers }: CardFanCarouselProps) {
                     }}
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="font-heading font-bold text-lg uppercase">{organizer.name}</h3>
-                  <p className="font-body text-xs text-gray-500 uppercase mt-1">{organizer.role}</p>
-                  <p className="font-body text-xs font-bold text-primary uppercase mt-1">{organizer.organization}</p>
+                <div className="p-4 md:p-6">
+                  <h3 className="font-heading font-bold text-base md:text-lg uppercase">{organizer.name}</h3>
+                  <p className="font-body text-[10px] md:text-xs text-gray-500 uppercase mt-1">{organizer.role}</p>
+                  <p className="font-body text-[10px] md:text-xs font-bold text-primary uppercase mt-1">{organizer.organization}</p>
                 </div>
               </NeoCard>
             </motion.div>
@@ -98,7 +120,7 @@ export function CardFanCarousel({ organizers }: CardFanCarouselProps) {
       </div>
       
       {/* Dot Indicators */}
-      <div className="flex gap-3 mt-8">
+      <div className="flex gap-3 mt-4 z-50 relative">
         {organizers.map((_, index) => (
           <button
             key={index}

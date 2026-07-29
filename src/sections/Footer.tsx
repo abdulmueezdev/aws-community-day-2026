@@ -10,8 +10,16 @@ export function Footer() {
 
   return (
     <ScrollReveal>
-      <footer className="bg-footer text-white py-12 px-6 relative border-t-[3px] border-black">
-        <div className="max-w-7xl mx-auto flex flex-col items-center">
+      <footer className="relative bg-footer border-t-[3px] border-black overflow-hidden py-12 px-6">
+        {/* Animated Background */}
+        <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
+          {/* Floating shapes */}
+          <div className="absolute w-64 h-64 bg-primary/20 border-[3px] border-black -top-20 -left-20 animate-float" />
+          <div className="absolute w-48 h-48 bg-secondary/20 border-[3px] border-black top-1/2 -right-10 animate-float-delayed" />
+          <div className="absolute w-32 h-32 bg-tertiary/20 border-[3px] border-black bottom-10 left-1/3 animate-float-slow" />
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center">
           
           {/* Logo and Tagline */}
           <div className="flex flex-col items-center mb-12">
