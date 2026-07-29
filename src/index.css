@@ -78,3 +78,17 @@ html {
 .animate-float-reverse {
   animation: float-reverse 9s ease-in-out infinite 1s;
 }
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
+.animate-marquee {
+  animation: marquee-scroll 25s linear infinite;
+}
+
+.marquee-pause:hover .animate-marquee {
+  animation-play-state: paused;
+}
+

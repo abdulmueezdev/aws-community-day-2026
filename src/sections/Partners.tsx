@@ -1,10 +1,7 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { defaultSiteData } from '../data/siteData';
 
 export function Partners() {
   const { partners } = defaultSiteData;
-  const [isPaused, setIsPaused] = useState(false);
   
   // Triple duplicate for seamless infinite loop
   const duplicated = [...partners, ...partners, ...partners];
@@ -23,25 +20,8 @@ export function Partners() {
         </div>
 
         {/* Marquee Container */}
-        <div 
-          className="relative w-full overflow-hidden py-4"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          <motion.div
-            className="flex gap-4 w-max"
-            animate={{ 
-              x: isPaused ? undefined : [0, -220 * partners.length] 
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 25,
-                ease: "linear",
-              },
-            }}
-          >
+        <div className="relative w-full overflow-hidden py-6 marquee-pause">
+          <div className="flex gap-4 md:gap-6 w-max animate-marquee">
             {duplicated.map((partner, index) => {
               const isFirstOriginal = index === 0;
               
@@ -83,7 +63,7 @@ export function Partners() {
                 </div>
               );
             })}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -285,6 +285,7 @@ export const defaultSiteData: SiteData = {
       role: "LOGISTIC HEAD",
       organization: "UMT",
       photoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Muhammad+Hassan+Ali",
+      linkedin: "https://linkedin.com/in/hassanali",
       displayOrder: 5,
       isVisible: true
     }
