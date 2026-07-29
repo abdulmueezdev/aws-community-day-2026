@@ -4,7 +4,6 @@ import { NeoButton } from '../../components/NeoButton';
 import { NeoCard } from '../../components/NeoCard';
 import { NeoBadge } from '../../components/NeoBadge';
 import { SpeakerModal } from '../components/SpeakerModal';
-import { ExportConfig } from '../components/ExportConfig';
 import { ConfirmDialog } from '../components/ConfirmDialog';
 import { defaultSiteData, type Speaker } from '../../data/siteData';
 
@@ -37,7 +36,7 @@ export function SpeakersManager() {
     setDeletingId(null);
   };
 
-  const currentConfig = { ...defaultSiteData, speakers };
+
 
   return (
     <div className="flex flex-col gap-6">
@@ -138,7 +137,6 @@ export function SpeakersManager() {
         onCancel={() => setIsConfirmOpen(false)}
       />
 
-      <ExportConfig data={currentConfig} />
     </div>
   );
 }

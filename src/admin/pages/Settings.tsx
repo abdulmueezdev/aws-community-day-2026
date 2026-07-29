@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { NeoCard } from '../../components/NeoCard';
 import { NeoInput } from '../../components/NeoInput';
-import { ExportConfig } from '../components/ExportConfig';
 import { defaultSiteData } from '../../data/siteData';
 
 export function Settings() {
@@ -14,7 +13,7 @@ export function Settings() {
     }));
   };
 
-  const currentConfig = { ...defaultSiteData, settings: settingsData };
+
 
   return (
     <div className="flex flex-col gap-8">
@@ -118,7 +117,6 @@ export function Settings() {
 
       </div>
 
-      <ExportConfig data={currentConfig} />
     </div>
   );
 }

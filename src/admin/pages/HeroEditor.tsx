@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NeoCard } from '../../components/NeoCard';
 import { NeoInput } from '../../components/NeoInput';
-import { ExportConfig } from '../components/ExportConfig';
+
 import { defaultSiteData } from '../../data/siteData';
 import { useSiteData } from '../../context/SiteDataContext';
 
@@ -10,11 +10,12 @@ export function HeroEditor() {
   const [heroData, setHeroData] = useState(siteData.event);
   
   const handleUpdate = (field: keyof typeof heroData, value: string | boolean) => {
-    setHeroData(prev => ({ ...prev, [field]: value }));
-    updateSiteData({ event: { ...heroData, [field]: value } as any });
+    setHeroData(prev => {
+      const updated = { ...prev, [field]: value };
+      updateSiteData({ event: updated } as any);
+      return updated;
+    });
   };
-
-  const currentConfig = { ...siteData, event: heroData };
 
   return (
     <div className="flex flex-col gap-8">
@@ -116,8 +117,6 @@ export function HeroEditor() {
           </NeoCard>
         </div>
       </div>
-
-      <ExportConfig data={currentConfig} />
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { NeoCard } from '../../components/NeoCard';
 import { NeoInput } from '../../components/NeoInput';
-import { ExportConfig } from '../components/ExportConfig';
 import { defaultSiteData } from '../../data/siteData';
 import { Venue } from '../../sections/Venue';
 
@@ -12,7 +11,7 @@ export function VenueEditor() {
     setVenueData(prev => ({ ...prev, [field]: value }));
   };
 
-  const currentConfig = { ...defaultSiteData, event: venueData };
+
 
   return (
     <div className="flex flex-col gap-8">
@@ -92,7 +91,6 @@ export function VenueEditor() {
         </div>
       </div>
 
-      <ExportConfig data={currentConfig} />
     </div>
   );
 }

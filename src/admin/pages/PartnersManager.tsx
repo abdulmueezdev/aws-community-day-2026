@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Pencil, Trash2, Eye, EyeOff } from 'lucide-react';
 import { NeoButton } from '../../components/NeoButton';
 import { NeoCard } from '../../components/NeoCard';
-import { ExportConfig } from '../components/ExportConfig';
 import { ConfirmDialog } from '../components/ConfirmDialog';
 import { defaultSiteData } from '../../data/siteData';
 
@@ -19,7 +18,7 @@ export function PartnersManager() {
     setDeletingId(null);
   };
 
-  const currentConfig = { ...defaultSiteData, partners };
+
 
   return (
     <div className="flex flex-col gap-6">
@@ -87,7 +86,6 @@ export function PartnersManager() {
         onCancel={() => setIsConfirmOpen(false)}
       />
 
-      <ExportConfig data={currentConfig} />
     </div>
   );
 }

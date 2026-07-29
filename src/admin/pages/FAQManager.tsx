@@ -3,7 +3,6 @@ import { ChevronDown, ChevronUp, Pencil, Trash2 } from 'lucide-react';
 import { NeoButton } from '../../components/NeoButton';
 import { NeoCard } from '../../components/NeoCard';
 import { NeoInput } from '../../components/NeoInput';
-import { ExportConfig } from '../components/ExportConfig';
 import { ConfirmDialog } from '../components/ConfirmDialog';
 import { defaultSiteData, type FAQ } from '../../data/siteData';
 
@@ -35,7 +34,7 @@ export function FAQManager() {
     setDeletingId(null);
   };
 
-  const currentConfig = { ...defaultSiteData, faqs };
+
 
   return (
     <div className="flex flex-col gap-6">
@@ -118,7 +117,6 @@ export function FAQManager() {
         onCancel={() => setIsConfirmOpen(false)}
       />
 
-      <ExportConfig data={currentConfig} />
     </div>
   );
 }
