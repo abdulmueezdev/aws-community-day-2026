@@ -10,7 +10,7 @@ export function WhereBuildersUnite() {
   return (
     <section id="about" className="pb-24 px-6 bg-white border-b-[3px] border-black">
       <ScrollReveal>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center pt-0">
           
           {/* Left Column */}
           <ScrollReveal delay={0.1}>

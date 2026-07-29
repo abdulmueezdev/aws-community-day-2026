@@ -14,11 +14,11 @@ export function Hero() {
   return (
     <section id="home" className="relative min-h-[calc(100vh-80px)] flex items-center justify-center pb-24 px-6 overflow-hidden bg-background">
       {/* Background Canvas — hidden on mobile */}
-      <div className="absolute inset-0 z-0 hidden md:block">
+      <div className="absolute inset-0 z-0 hidden md:block pt-0">
         <SkiperCrowd className="w-full h-full" />
       </div>
 
-      <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center">
+      <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center pt-0">
         
         {/* Logo Cluster */}
         <ScrollReveal>
