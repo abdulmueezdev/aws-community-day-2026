@@ -16,7 +16,7 @@ export function Speakers() {
         
         {/* Left Column: Panel Discussion */}
         <ScrollReveal delay={0}>
-          <div className="w-full lg:w-1/3 flex flex-col">
+          <div className="w-full lg:w-2/5 flex flex-col">
             <NeoBadge variant="primary" className="mb-6 self-start">
               PANEL DISCUSSION
             </NeoBadge>
@@ -37,7 +37,7 @@ export function Speakers() {
         </ScrollReveal>
 
         {/* Right Column: Workshops */}
-        <div className="w-full lg:w-2/3 flex flex-col">
+        <div className="w-full lg:w-3/5 flex flex-col">
           <NeoBadge variant="secondary" className="mb-6 self-start bg-white">
             SPEAKERS & WORKSHOPS
           </NeoBadge>
@@ -60,7 +60,7 @@ export function Speakers() {
 function SpeakerCard({ speaker, isLarge = false }: { speaker: any, isLarge?: boolean }) {
   return (
     <div className={`bg-white border-[3px] border-black shadow-neo rounded-none overflow-hidden hover:-translate-y-1 hover:shadow-neo-hover transition-transform flex flex-col h-full`}>
-      <div className={`relative ${isLarge ? 'flex-1 min-h-[400px] md:min-h-[500px]' : 'h-48'} w-full border-b-[3px] border-black bg-gray-200 overflow-hidden`}>
+      <div className={`relative ${isLarge ? 'flex-1 min-h-[280px] md:min-h-[320px]' : 'h-48'} w-full border-b-[3px] border-black bg-gray-200 overflow-hidden`}>
         <img 
           src={speaker.photoUrl} 
           alt={speaker.name} 
