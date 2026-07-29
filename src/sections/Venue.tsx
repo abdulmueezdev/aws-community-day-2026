@@ -1,9 +1,8 @@
 import { defaultSiteData } from '../data/siteData';
 import { NeoBadge } from '../components/NeoBadge';
 import { NeoButton } from '../components/NeoButton';
-import { NeoCard } from '../components/NeoCard';
 import { ScrollReveal } from '../components/ScrollReveal';
-
+import { VenueMap } from '../components/VenueMap';
 export function Venue() {
   const { event } = defaultSiteData;
 
@@ -40,13 +39,7 @@ export function Venue() {
         {/* Right Column: Map */}
         <ScrollReveal delay={0.2} className="w-full md:w-2/3">
           <div className="w-full">
-            <NeoCard className="p-0 overflow-hidden w-full h-[400px]">
-              <img 
-                src={event.venueMapEmbedUrl} 
-                alt="Map Location" 
-                className="w-full h-full object-cover rounded-none"
-              />
-            </NeoCard>
+            <VenueMap />
           </div>
         </ScrollReveal>
 

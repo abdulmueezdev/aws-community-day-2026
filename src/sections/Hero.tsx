@@ -3,6 +3,7 @@ import { NeoButton } from '../components/NeoButton';
 import { NeoCard } from '../components/NeoCard';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { useCountdown } from '../hooks/useCountdown';
+import { SkiperCrowd } from '../components/SkiperCrowd';
 
 export function Hero() {
   const { event } = defaultSiteData;
@@ -12,11 +13,10 @@ export function Hero() {
 
   return (
     <section id="home" className="relative min-h-[calc(100vh-80px)] flex items-center justify-center pt-16 pb-24 px-6 overflow-hidden bg-background">
-      {/* Grid Background */}
-      <div className="absolute inset-0 z-0 opacity-[0.05]" style={{
-        backgroundImage: 'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)',
-        backgroundSize: '40px 40px'
-      }}></div>
+      {/* Background Canvas — hidden on mobile */}
+      <div className="absolute inset-0 z-0 hidden md:block">
+        <SkiperCrowd className="w-full h-full" />
+      </div>
 
       <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center">
         
