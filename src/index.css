@@ -11,3 +11,33 @@
     @apply font-heading uppercase;
   }
 }
+
+/* Leaflet Neo-Brutalist Overrides */
+.leaflet-container {
+  font-family: inherit;
+  z-index: 10;
+}
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background: #ffffff;
+  color: #000000;
+  border: 3px solid #000000;
+  border-radius: 0;
+  box-shadow: 4px 4px 0px 0px #000000;
+}
+.leaflet-popup-tip-container {
+  display: none !important;
+}
+.leaflet-popup-content {
+  margin: 12px;
+}
+.leaflet-control-zoom a {
+  border: 3px solid #000000 !important;
+  border-radius: 0 !important;
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  margin-bottom: -3px; /* Overlap borders */
+  box-shadow: none !important;
+}
+.leaflet-control-zoom a:hover {
+  background-color: #f0f0f0 !important;
+}

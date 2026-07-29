@@ -37,11 +37,11 @@ export function Venue() {
         </ScrollReveal>
 
         {/* Right Column: Map */}
-        <ScrollReveal delay={0.2} className="w-full md:w-2/3">
+        <div className="w-full md:w-2/3">
           <div className="w-full">
             <VenueMap />
           </div>
-        </ScrollReveal>
+        </div>
 
       </div>
     </section>

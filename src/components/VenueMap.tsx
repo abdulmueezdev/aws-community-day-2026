@@ -21,7 +21,7 @@ const VENUE_COORDS: LatLngExpression = [31.5204, 74.3587]; // Gulberg III, Lahor
 
 export function VenueMap() {
   return (
-    <NeoCard className="w-full h-[400px] md:h-[500px] p-0 overflow-hidden">
+    <NeoCard className="w-full h-[400px] md:h-[500px] p-0 !overflow-hidden">
       <MapContainer 
         center={VENUE_COORDS} 
         zoom={15} 
