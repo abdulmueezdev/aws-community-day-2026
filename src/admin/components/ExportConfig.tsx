@@ -30,7 +30,7 @@ export function ExportConfig({ data, lastSaved = 'Never', onDiscard }: ExportCon
 
   return (
     <>
-      <div className="fixed bottom-0 left-0 lg:left-[260px] right-0 bg-white border-t-[3px] border-black shadow-[0px_-6px_0px_0px_#000] p-4 z-40">
+      <div className="fixed bottom-0 left-0 lg:left-[260px] right-0 bg-white border-t-[3px] border-black shadow-[0px_-6px_0px_0px_#000] rounded-none p-4 z-40">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-bold text-gray-500">Last saved: {lastSaved}</p>
           
@@ -46,7 +46,7 @@ export function ExportConfig({ data, lastSaved = 'Never', onDiscard }: ExportCon
               className="flex-1 sm:flex-none flex items-center justify-center gap-2"
             >
               {isCopied ? <Check size={20} /> : <Copy size={20} />}
-              Export Config
+              {isCopied ? 'Copied!' : 'Export Config'}
             </NeoButton>
           </div>
         </div>

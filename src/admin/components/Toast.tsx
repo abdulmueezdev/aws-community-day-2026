@@ -21,10 +21,10 @@ export function Toast({ message, isVisible, onClose }: ToastProps) {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
+          initial={{ opacity: 0, x: '100%' }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 50 }}
-          className="fixed top-4 right-4 z-50 bg-secondary text-black px-6 py-4 font-bold border-[3px] border-black shadow-neo-sm"
+          exit={{ opacity: 0, x: '100%' }}
+          className="fixed top-4 right-4 z-50 bg-secondary text-black px-6 py-4 font-bold border-[3px] border-black shadow-neo-sm rounded-none"
         >
           {message}
         </motion.div>
