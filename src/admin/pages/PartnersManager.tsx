@@ -49,14 +49,14 @@ export function PartnersManager() {
                   <h4 className="font-heading text-xl font-black uppercase line-clamp-1">{partner.name}</h4>
                 </div>
                 <p className="font-bold text-gray-600 text-sm mt-2 line-clamp-2">{partner.tagline || 'No tagline'}</p>
-                <a href={partner.websiteUrl} target="_blank" rel="noopener noreferrer" className="text-teal-600 font-bold text-sm hover:underline mt-1 block truncate">
+                <a href={partner.websiteUrl} target="_blank" rel="noopener noreferrer" className="text-tertiary font-bold text-sm hover:underline mt-1 block truncate">
                   {partner.websiteUrl}
                 </a>
               </div>
 
               <div className="flex justify-end gap-2 pt-4 border-t-[3px] border-black">
                 <button 
-                  className="p-2 hover:bg-gray-200 border-[2px] border-transparent hover:border-black transition-colors"
+                  className="p-2 hover:bg-gray-200 border-[3px] border-transparent hover:border-black transition-colors"
                   onClick={() => {
                     setPartners(partners.map(p => p.id === partner.id ? { ...p, isVisible: !p.isVisible } : p));
                   }}
@@ -64,11 +64,11 @@ export function PartnersManager() {
                 >
                   {partner.isVisible ? <Eye size={20} /> : <EyeOff size={20} className="text-gray-400" />}
                 </button>
-                <button className="p-2 hover:bg-teal-100 border-[2px] border-transparent hover:border-black transition-colors text-teal-600">
+                <button className="p-2 hover:bg-teal-100 border-[3px] border-transparent hover:border-black transition-colors text-tertiary">
                   <Pencil size={20} />
                 </button>
                 <button 
-                  className="p-2 hover:bg-red-100 border-[2px] border-transparent hover:border-black transition-colors text-red-500"
+                  className="p-2 hover:bg-red-100 border-[3px] border-transparent hover:border-black transition-colors text-red-500"
                   onClick={() => { setDeletingId(partner.id); setIsConfirmOpen(true); }}
                 >
                   <Trash2 size={20} />

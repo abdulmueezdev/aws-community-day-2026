@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { Copy, Check } from 'lucide-react';
 import { NeoButton } from '../../components/NeoButton';
 import { Toast } from './Toast';
+import type { SiteData } from '../../data/siteData';
 
 interface ExportConfigProps {
-  data: any;
+  data: SiteData;
   lastSaved?: string;
   onDiscard?: () => void;
 }
@@ -29,7 +30,7 @@ export function ExportConfig({ data, lastSaved = 'Never', onDiscard }: ExportCon
 
   return (
     <>
-      <div className="fixed bottom-0 left-0 lg:left-[260px] right-0 bg-white border-t-[3px] border-black p-4 z-40">
+      <div className="fixed bottom-0 left-0 lg:left-[260px] right-0 bg-white border-t-[3px] border-black shadow-[0px_-6px_0px_0px_#000] p-4 z-40">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-bold text-gray-500">Last saved: {lastSaved}</p>
           

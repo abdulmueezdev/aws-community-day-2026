@@ -5,7 +5,7 @@ import { NeoCard } from '../../components/NeoCard';
 import { NeoInput } from '../../components/NeoInput';
 import { ExportConfig } from '../components/ExportConfig';
 import { ConfirmDialog } from '../components/ConfirmDialog';
-import { defaultSiteData } from '../../data/siteData';
+import { defaultSiteData, type FAQ } from '../../data/siteData';
 
 export function FAQManager() {
   const [faqs, setFaqs] = useState(defaultSiteData.faqs);
@@ -16,7 +16,7 @@ export function FAQManager() {
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
-  const startEdit = (faq: any) => {
+  const startEdit = (faq: FAQ) => {
     setEditingId(faq.id);
     setEditForm({ question: faq.question, answer: faq.answer });
     setExpandedId(faq.id);
@@ -64,13 +64,13 @@ export function FAQManager() {
               <div className="flex items-center gap-4">
                 <div className="flex gap-2" onClick={e => e.stopPropagation()}>
                   <button 
-                    className="p-2 hover:bg-teal-100 border-[2px] border-transparent hover:border-black transition-colors text-teal-600"
+                    className="p-2 hover:bg-teal-100 border-[3px] border-transparent hover:border-black transition-colors text-tertiary"
                     onClick={() => startEdit(faq)}
                   >
                     <Pencil size={20} />
                   </button>
                   <button 
-                    className="p-2 hover:bg-red-100 border-[2px] border-transparent hover:border-black transition-colors text-red-500"
+                    className="p-2 hover:bg-red-100 border-[3px] border-transparent hover:border-black transition-colors text-red-500"
                     onClick={() => { setDeletingId(faq.id); setIsConfirmOpen(true); }}
                   >
                     <Trash2 size={20} />
@@ -91,8 +91,7 @@ export function FAQManager() {
                     />
                     <div className="flex flex-col gap-2">
                       <label className="font-heading font-black text-lg uppercase">Answer</label>
-                      <textarea 
-                        className="w-full p-3 border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold outline-none focus:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all min-h-[100px]"
+                      <textarea className="rounded-none w-full p-3 border-[3px] border-black shadow-neo-sm font-bold outline-none focus:shadow-neo-hover transition-all min-h-[100px]"
                         value={editForm.answer}
                         onChange={e => setEditForm({...editForm, answer: e.target.value})}
                       />

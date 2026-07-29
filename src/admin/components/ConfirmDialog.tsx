@@ -52,8 +52,7 @@ export function ConfirmDialog({
                 </NeoButton>
                 <NeoButton 
                   onClick={onConfirm} 
-                  variant="primary" 
-                  className="bg-red-500 text-white"
+                  variant="danger"
                 >
                   {confirmText}
                 </NeoButton>

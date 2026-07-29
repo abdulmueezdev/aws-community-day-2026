@@ -6,20 +6,20 @@ import { NeoBadge } from '../../components/NeoBadge';
 import { SpeakerModal } from '../components/SpeakerModal';
 import { ExportConfig } from '../components/ExportConfig';
 import { ConfirmDialog } from '../components/ConfirmDialog';
-import { defaultSiteData } from '../../data/siteData';
+import { defaultSiteData, type Speaker } from '../../data/siteData';
 
 export function SpeakersManager() {
   const [speakers, setSpeakers] = useState(defaultSiteData.speakers);
   const [filter, setFilter] = useState('All');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingSpeaker, setEditingSpeaker] = useState<any>(null);
+  const [editingSpeaker, setEditingSpeaker] = useState<Speaker | null>(null);
   
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
   const filteredSpeakers = speakers.filter(s => filter === 'All' || s.sessionType.toLowerCase() === filter.toLowerCase());
 
-  const handleSave = (speakerData: any) => {
+  const handleSave = (speakerData: Speaker) => {
     if (editingSpeaker) {
       setSpeakers(speakers.map(s => s.id === speakerData.id ? speakerData : s));
     } else {
@@ -60,7 +60,7 @@ export function SpeakersManager() {
             onClick={() => setFilter(tab)}
             className={`
               px-4 py-2 font-bold border-[3px] border-black transition-colors whitespace-nowrap
-              ${filter === tab ? 'bg-black text-white' : 'bg-white hover:bg-gray-100 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'}
+              ${filter === tab ? 'bg-black text-white' : 'bg-white hover:bg-gray-100 shadow-neo-sm'}
             `}
           >
             {tab}
@@ -78,7 +78,7 @@ export function SpeakersManager() {
                 <div className="w-full h-full flex items-center justify-center font-bold text-gray-400">No Image</div>
               )}
               <div className="absolute top-2 right-2">
-                <NeoBadge className={speaker.sessionType === 'keynote' ? 'bg-primary' : speaker.sessionType === 'panel' ? 'bg-teal-400' : 'bg-purple-400'}>
+                <NeoBadge className={speaker.sessionType === 'keynote' ? 'bg-primary' : speaker.sessionType === 'panel' ? 'bg-tertiary' : 'bg-secondary'}>
                   {speaker.sessionType.toUpperCase()}
                 </NeoBadge>
               </div>
@@ -96,7 +96,7 @@ export function SpeakersManager() {
 
             <div className="p-4 border-t-[3px] border-black bg-gray-50 flex justify-end gap-2">
               <button 
-                className="p-2 hover:bg-gray-200 border-[2px] border-transparent hover:border-black transition-colors"
+                className="p-2 hover:bg-gray-200 border-[3px] border-transparent hover:border-black transition-colors"
                 onClick={() => {
                   setSpeakers(speakers.map(s => s.id === speaker.id ? { ...s, isVisible: !s.isVisible } : s));
                 }}
@@ -105,14 +105,14 @@ export function SpeakersManager() {
                 {speaker.isVisible ? <Eye size={20} /> : <EyeOff size={20} className="text-gray-400" />}
               </button>
               <button 
-                className="p-2 hover:bg-teal-100 border-[2px] border-transparent hover:border-black transition-colors text-teal-600"
+                className="p-2 hover:bg-teal-100 border-[3px] border-transparent hover:border-black transition-colors text-tertiary"
                 onClick={() => { setEditingSpeaker(speaker); setIsModalOpen(true); }}
                 title="Edit"
               >
                 <Pencil size={20} />
               </button>
               <button 
-                className="p-2 hover:bg-red-100 border-[2px] border-transparent hover:border-black transition-colors text-red-500"
+                className="p-2 hover:bg-red-100 border-[3px] border-transparent hover:border-black transition-colors text-red-500"
                 onClick={() => { setDeletingId(speaker.id); setIsConfirmOpen(true); }}
                 title="Delete"
               >
@@ -126,7 +126,7 @@ export function SpeakersManager() {
       <SpeakerModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
-        speaker={editingSpeaker}
+        speaker={editingSpeaker || undefined}
         onSave={handleSave}
       />
 

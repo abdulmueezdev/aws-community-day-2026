@@ -8,7 +8,7 @@ export function useAdminAuth() {
   });
 
   const login = useCallback((password: string) => {
-    const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD || 'dummy';
+    const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD;
     if (password === adminPassword) {
       localStorage.setItem(AUTH_KEY, 'true');
       setIsAuthenticated(true);

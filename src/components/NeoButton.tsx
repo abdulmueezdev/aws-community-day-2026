@@ -27,11 +27,11 @@ export function NeoButton({
   const baseStyles = "inline-flex items-center justify-center rounded-none border-[3px] border-black font-heading font-semibold uppercase text-sm tracking-wide px-6 py-3 transition-all";
   
   const variants = {
-    primary: "bg-primary text-white shadow-neo hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neo-sm",
-    secondary: "bg-secondary text-black shadow-neo hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neo-sm",
-    teal: "bg-tertiary text-black shadow-neo hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neo-sm",
-    ghost: "bg-white text-black shadow-neo hover:translate-x-[2px] hover:translate-y-[2px]",
-    danger: "bg-danger text-white shadow-neo hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neo-sm"
+    primary: "bg-primary text-white shadow-neo hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neo-sm active:translate-x-[2px] active:translate-y-[2px] active:shadow-neo-sm",
+    secondary: "bg-secondary text-black shadow-neo hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neo-sm active:translate-x-[2px] active:translate-y-[2px] active:shadow-neo-sm",
+    teal: "bg-tertiary text-black shadow-neo hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neo-sm active:translate-x-[2px] active:translate-y-[2px] active:shadow-neo-sm",
+    ghost: "bg-white text-black shadow-neo hover:translate-x-[2px] hover:translate-y-[2px] active:translate-x-[2px] active:translate-y-[2px]",
+    danger: "bg-danger text-white shadow-neo hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neo-sm active:translate-x-[2px] active:translate-y-[2px] active:shadow-neo-sm"
   };
 
   const disabledStyles = disabled ? "opacity-50 cursor-not-allowed hover:translate-x-0 hover:translate-y-0 hover:shadow-neo" : "";

@@ -4,16 +4,18 @@ import { X, Upload } from 'lucide-react';
 import { NeoCard } from '../../components/NeoCard';
 import { NeoInput } from '../../components/NeoInput';
 import { NeoButton } from '../../components/NeoButton';
+import type { Speaker } from '../../data/siteData';
 
 interface SpeakerModalProps {
   isOpen: boolean;
   onClose: () => void;
-  speaker?: any;
-  onSave: (speaker: any) => void;
+  speaker?: Speaker;
+  onSave: (speaker: Speaker) => void;
 }
 
 export function SpeakerModal({ isOpen, onClose, speaker, onSave }: SpeakerModalProps) {
-  const [formData, setFormData] = useState(speaker || {
+  const [formData, setFormData] = useState<Speaker>(speaker || {
+    id: '',
     name: '',
     role: '',
     company: '',
@@ -89,10 +91,9 @@ export function SpeakerModal({ isOpen, onClose, speaker, onSave }: SpeakerModalP
                   />
                   <div className="flex flex-col gap-2">
                     <label className="font-heading font-black text-lg uppercase">Session Type</label>
-                    <select 
-                      className="w-full p-3 border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold outline-none focus:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all bg-white"
+                    <select className="rounded-none w-full p-3 border-[3px] border-black shadow-neo-sm font-bold outline-none focus:shadow-neo-hover transition-all bg-white"
                       value={formData.sessionType}
-                      onChange={e => setFormData({...formData, sessionType: e.target.value})}
+                      onChange={e => setFormData({...formData, sessionType: e.target.value as "panel" | "workshop" | "keynote"})}
                     >
                       <option value="keynote">Keynote</option>
                       <option value="panel">Panel</option>
@@ -109,8 +110,7 @@ export function SpeakerModal({ isOpen, onClose, speaker, onSave }: SpeakerModalP
 
                 <div className="flex flex-col gap-2">
                   <label className="font-heading font-black text-lg uppercase">Bio</label>
-                  <textarea 
-                    className="w-full p-3 border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold outline-none focus:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all min-h-[100px]"
+                  <textarea className="rounded-none w-full p-3 border-[3px] border-black shadow-neo-sm font-bold outline-none focus:shadow-neo-hover transition-all min-h-[100px]"
                     value={formData.bio}
                     onChange={e => setFormData({...formData, bio: e.target.value})}
                   />

@@ -7,7 +7,7 @@ import { defaultSiteData } from '../../data/siteData';
 export function HeroEditor() {
   const [heroData, setHeroData] = useState(defaultSiteData.event);
   
-  const handleUpdate = (field: keyof typeof heroData, value: string) => {
+  const handleUpdate = (field: keyof typeof heroData, value: string | boolean) => {
     setHeroData(prev => ({ ...prev, [field]: value }));
   };
 
@@ -32,8 +32,7 @@ export function HeroEditor() {
               />
               <div className="flex flex-col gap-2">
                 <label className="font-heading font-black text-lg uppercase">Tagline</label>
-                <textarea 
-                  className="w-full p-3 border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold outline-none focus:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all min-h-[100px]"
+                <textarea className="rounded-none w-full p-3 border-[3px] border-black shadow-neo-sm font-bold outline-none focus:shadow-neo-hover transition-all min-h-[100px]"
                   value={heroData.tagline}
                   onChange={(e) => handleUpdate('tagline', e.target.value)}
                 />
@@ -65,7 +64,7 @@ export function HeroEditor() {
                   id="secondaryDisabled" 
                   className="w-6 h-6 border-[3px] border-black accent-primary"
                   checked={heroData.secondaryButtonDisabled}
-                  onChange={(e) => handleUpdate('secondaryButtonDisabled', e.target.checked as any)}
+                  onChange={(e) => handleUpdate('secondaryButtonDisabled', e.target.checked)}
                 />
                 <label htmlFor="secondaryDisabled" className="font-bold cursor-pointer">
                   Disable Secondary Button

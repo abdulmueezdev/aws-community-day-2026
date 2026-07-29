@@ -7,7 +7,7 @@ import { defaultSiteData } from '../../data/siteData';
 export function Settings() {
   const [settingsData, setSettingsData] = useState(defaultSiteData.settings);
   
-  const handleUpdate = (field: keyof typeof settingsData, value: any) => {
+  const handleUpdate = (field: keyof typeof settingsData, value: string | number | boolean) => {
     setSettingsData(prev => ({
       ...prev,
       [field]: value
@@ -87,8 +87,7 @@ export function Settings() {
               />
               <div className="flex flex-col gap-2">
                 <label className="font-heading font-black text-lg uppercase">Meta Description</label>
-                <textarea 
-                  className="w-full p-3 border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold outline-none focus:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all min-h-[100px]"
+                <textarea className="rounded-none w-full p-3 border-[3px] border-black shadow-neo-sm font-bold outline-none focus:shadow-neo-hover transition-all min-h-[100px]"
                   value={settingsData.seoDescription}
                   onChange={(e) => handleUpdate('seoDescription', e.target.value)}
                 />
@@ -101,16 +100,14 @@ export function Settings() {
             <div className="flex flex-col gap-4">
               <div className="flex flex-col gap-2">
                 <label className="font-heading font-black text-lg uppercase">Copyright Text</label>
-                <textarea 
-                  className="w-full p-3 border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold outline-none focus:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all min-h-[80px]"
+                <textarea className="rounded-none w-full p-3 border-[3px] border-black shadow-neo-sm font-bold outline-none focus:shadow-neo-hover transition-all min-h-[80px]"
                   value={settingsData.footerCopyright}
                   onChange={(e) => handleUpdate('footerCopyright', e.target.value)}
                 />
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-heading font-black text-lg uppercase">Credits Text</label>
-                <textarea 
-                  className="w-full p-3 border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-bold outline-none focus:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all min-h-[80px]"
+                <textarea className="rounded-none w-full p-3 border-[3px] border-black shadow-neo-sm font-bold outline-none focus:shadow-neo-hover transition-all min-h-[80px]"
                   value={settingsData.footerCredits}
                   onChange={(e) => handleUpdate('footerCredits', e.target.value)}
                 />

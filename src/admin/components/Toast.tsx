@@ -24,7 +24,7 @@ export function Toast({ message, isVisible, onClose }: ToastProps) {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 50 }}
-          className="fixed top-4 right-4 z-50 bg-secondary text-black px-6 py-4 font-bold border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+          className="fixed top-4 right-4 z-50 bg-secondary text-black px-6 py-4 font-bold border-[3px] border-black shadow-neo-sm"
         >
           {message}
         </motion.div>

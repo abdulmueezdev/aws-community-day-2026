@@ -1,6 +1,8 @@
 import { defaultSiteData } from '../data/siteData';
 import { NeoBadge } from '../components/NeoBadge';
 import { NeoCard } from '../components/NeoCard';
+import { StaggerContainer } from '../components/StaggerContainer';
+import { StaggerItem } from '../components/StaggerItem';
 
 export function Organizers() {
   const { organizers } = defaultSiteData;
@@ -24,22 +26,24 @@ export function Organizers() {
 
         {/* Horizontal scroll container for mobile, flex wrap for desktop */}
         <div className="w-full overflow-x-auto pb-8 -mb-8">
-          <div className="flex flex-row md:flex-wrap justify-start md:justify-center gap-6 min-w-max md:min-w-0 px-2">
+          <StaggerContainer className="flex flex-row md:flex-wrap justify-start md:justify-center gap-6 min-w-max md:min-w-0 px-2">
             {visibleOrganizers.map((org) => (
-              <NeoCard key={org.id} className="flex flex-col items-center text-center min-w-[250px] max-w-[280px]">
-                <div className="w-32 h-32 rounded-full border-[3px] border-black shadow-neo-sm overflow-hidden mb-6 bg-gray-200">
-                  <img 
-                    src={org.photoUrl} 
-                    alt={org.name} 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="font-heading font-bold text-xl uppercase leading-tight mb-1">{org.name}</h3>
-                <p className="font-body text-sm text-textSecondary uppercase font-semibold">{org.role}</p>
-                <p className="font-body text-xs text-textSecondary mt-1">{org.organization}</p>
-              </NeoCard>
+              <StaggerItem key={org.id}>
+                <NeoCard className="flex flex-col items-center text-center min-w-[250px] max-w-[280px]">
+                  <div className="w-32 h-32 rounded-full border-[3px] border-black shadow-neo-sm overflow-hidden mb-6 bg-gray-200">
+                    <img 
+                      src={org.photoUrl} 
+                      alt={org.name} 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="font-heading font-bold text-xl uppercase leading-tight mb-1">{org.name}</h3>
+                  <p className="font-body text-sm text-textSecondary uppercase font-semibold">{org.role}</p>
+                  <p className="font-body text-xs text-textSecondary mt-1">{org.organization}</p>
+                </NeoCard>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
 
       </div>

@@ -1,5 +1,8 @@
 import { defaultSiteData } from '../data/siteData';
 import { NeoBadge } from '../components/NeoBadge';
+import { ScrollReveal } from '../components/ScrollReveal';
+import { StaggerContainer } from '../components/StaggerContainer';
+import { StaggerItem } from '../components/StaggerItem';
 
 export function Speakers() {
   const { speakers } = defaultSiteData;
@@ -12,22 +15,24 @@ export function Speakers() {
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16">
         
         {/* Left Column: Panel Discussion */}
-        <div className="w-full lg:w-1/3 flex flex-col">
-          <NeoBadge variant="primary" className="mb-6 self-start">
-            PANEL DISCUSSION
-          </NeoBadge>
-          
-          <h2 className="font-heading font-black text-4xl uppercase leading-tight mb-4">
-            Intelligence Needs Infrastructure
-          </h2>
-          <p className="font-body text-lg text-black font-semibold mb-8">
-            Who Owns AI Systems on Cloud?
-          </p>
-
-          {panelSpeaker && (
-            <SpeakerCard speaker={panelSpeaker} isLarge />
-          )}
-        </div>
+        <ScrollReveal delay={0}>
+          <div className="w-full lg:w-1/3 flex flex-col">
+            <NeoBadge variant="primary" className="mb-6 self-start">
+              PANEL DISCUSSION
+            </NeoBadge>
+            
+            <h2 className="font-heading font-black text-4xl uppercase leading-tight mb-4">
+              Intelligence Needs Infrastructure
+            </h2>
+            <p className="font-body text-lg text-black font-semibold mb-8">
+              Who Owns AI Systems on Cloud?
+            </p>
+  
+            {panelSpeaker && (
+              <SpeakerCard speaker={panelSpeaker} isLarge />
+            )}
+          </div>
+        </ScrollReveal>
 
         {/* Right Column: Workshops */}
         <div className="w-full lg:w-2/3 flex flex-col">
@@ -36,11 +41,13 @@ export function Speakers() {
           </NeoBadge>
 
           {/* Grid of 7 cards - 4 columns on large screens, or wrap */}
-          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
             {workshopSpeakers.map((speaker) => (
-              <SpeakerCard key={speaker.id} speaker={speaker} />
+              <StaggerItem key={speaker.id}>
+                <SpeakerCard speaker={speaker} />
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
 
       </div>

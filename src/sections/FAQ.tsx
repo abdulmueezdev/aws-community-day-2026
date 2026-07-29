@@ -51,13 +51,10 @@ function FAQItem({ faq, defaultOpen = false }: { faq: any, defaultOpen?: boolean
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            className="overflow-hidden"
           >
-            <div className="px-6 pb-6 pt-0 font-body text-textSecondary border-t-[3px] border-black mt-2">
-              <div className="pt-4">
-                {faq.answer}
-              </div>
-            </div>
+            <p className="p-4 font-bold text-gray-700">{faq.answer}</p>
           </motion.div>
         )}
       </AnimatePresence>
