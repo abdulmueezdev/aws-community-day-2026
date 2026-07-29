@@ -1,7 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { useState, useEffect, useCallback } from 'react';
 import { NeoCard } from './NeoCard';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { Organizer } from '../data/siteData';
 
 interface CardFanCarouselProps {
@@ -35,77 +34,82 @@ export function CardFanCarousel({ organizers }: CardFanCarouselProps) {
   };
 
   return (
-    <div 
-      className="relative w-full max-w-4xl mx-auto h-[500px] flex items-center justify-center"
-      style={{ perspective: '1000px' }}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-    >
-      {/* Navigation Arrows */}
-      <button 
-        onClick={prev}
-        className="absolute left-0 z-50 p-3 bg-secondary border-[3px] border-black shadow-neo hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neo-sm active:translate-x-[2px] active:translate-y-[2px]"
-        aria-label="Previous organizer"
+    <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
+      <div 
+        className="relative w-full h-[500px] flex items-center justify-center"
+        style={{ perspective: '1200px' }}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
       >
-        <ChevronLeft className="w-6 h-6" />
-      </button>
+        {organizers.map((organizer, index) => {
+          const offset = index - currentIndex;
+          const normalizedOffset = ((offset + organizers.length + Math.floor(organizers.length / 2)) % organizers.length) - Math.floor(organizers.length / 2);
+          
+          const isActive = index === currentIndex;
+          
+          // Fan logic using rotateY and rotateZ
+          const xOffset = normalizedOffset * 60;
+          const rotateZ = shouldReduceMotion ? 0 : normalizedOffset * 8;
+          const rotateY = shouldReduceMotion ? 0 : normalizedOffset * -15; // 3D depth
+          const scale = isActive ? 1.15 : 0.9;
+          const zIndex = isActive ? 30 : 20 - Math.abs(normalizedOffset);
+          const opacity = Math.abs(normalizedOffset) > 2 ? 0 : 1;
+
+          return (
+            <motion.div
+              key={organizer.id}
+              className="absolute w-[280px] cursor-pointer"
+              initial={false}
+              animate={{
+                x: xOffset,
+                rotateZ,
+                rotateY,
+                scale,
+                zIndex,
+                opacity,
+              }}
+              transition={{ 
+                duration: shouldReduceMotion ? 0 : 0.6, 
+                ease: [0.16, 1, 0.3, 1] 
+              }}
+              style={{ transformStyle: 'preserve-3d' }}
+              onClick={() => setCurrentIndex(index)}
+            >
+              <NeoCard className="flex flex-col text-center p-0 overflow-hidden bg-white">
+                <div className="w-full h-48 border-b-[3px] border-black bg-gray-100">
+                  <img 
+                    src={organizer.photoUrl} 
+                    alt={organizer.name}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(organizer.name)}&background=random&size=200`;
+                    }}
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-heading font-bold text-lg uppercase">{organizer.name}</h3>
+                  <p className="font-body text-xs text-gray-500 uppercase mt-1">{organizer.role}</p>
+                  <p className="font-body text-xs font-bold text-primary uppercase mt-1">{organizer.organization}</p>
+                </div>
+              </NeoCard>
+            </motion.div>
+          );
+        })}
+      </div>
       
-      <button 
-        onClick={next}
-        className="absolute right-0 z-50 p-3 bg-secondary border-[3px] border-black shadow-neo hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neo-sm active:translate-x-[2px] active:translate-y-[2px]"
-        aria-label="Next organizer"
-      >
-        <ChevronRight className="w-6 h-6" />
-      </button>
-
-      {/* Cards */}
-      {organizers.map((organizer, index) => {
-        const offset = index - currentIndex;
-        const normalizedOffset = ((offset + organizers.length + Math.floor(organizers.length / 2)) % organizers.length) - Math.floor(organizers.length / 2);
-        
-        const isActive = index === currentIndex;
-        
-        const xOffset = normalizedOffset * 60;
-        const rotateZ = shouldReduceMotion ? 0 : normalizedOffset * 12;
-        const scale = isActive ? 1.1 : 0.9;
-        const zIndex = isActive ? 30 : 20 - Math.abs(normalizedOffset);
-        const opacity = Math.abs(normalizedOffset) > 2 ? 0 : 1;
-
-        return (
-          <motion.div
-            key={organizer.id}
-            className="absolute w-[280px]"
-            initial={false}
-            animate={{
-              x: xOffset,
-              rotateZ,
-              scale,
-              zIndex,
-              opacity,
-            }}
-            transition={{ 
-              duration: shouldReduceMotion ? 0 : 0.5, 
-              ease: [0.25, 0.1, 0.25, 1] 
-            }}
-            style={{ transformStyle: 'preserve-3d' }}
-          >
-            <NeoCard className="flex flex-col items-center text-center p-6 bg-white">
-              <div className="w-24 h-24 border-[3px] border-black rounded-none overflow-hidden mb-4 shadow-neo-sm">
-                <img 
-                  src={organizer.photoUrl} 
-                  alt={organizer.name}
-                  className="w-full h-full object-cover"
-                  width={96}
-                  height={96}
-                />
-              </div>
-              <h3 className="font-heading font-bold text-lg uppercase">{organizer.name}</h3>
-              <p className="font-body text-xs text-gray-500 uppercase mt-1">{organizer.role}</p>
-              <p className="font-body text-xs font-bold text-primary uppercase mt-1">{organizer.organization}</p>
-            </NeoCard>
-          </motion.div>
-        );
-      })}
+      {/* Dot Indicators */}
+      <div className="flex gap-3 mt-8">
+        {organizers.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-3 h-3 rounded-none border-[2px] border-black transition-colors ${
+              index === currentIndex ? 'bg-primary' : 'bg-white'
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
     </div>
   );
 }

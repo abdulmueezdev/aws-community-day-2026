@@ -99,7 +99,7 @@ export const defaultSiteData: SiteData = {
     venueProvince: "Punjab",
     venuePostalCode: "54660",
     venueCountry: "Pakistan",
-    venueMapEmbedUrl: "https://placehold.co/800x400?text=Map+Embed"
+    venueMapEmbedUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Map+Embed"
   },
   speakers: [
     {
@@ -110,7 +110,7 @@ export const defaultSiteData: SiteData = {
       sessionTitle: "Intelligence Needs Infrastructure: Who Owns AI Systems on Cloud?",
       sessionType: "panel",
       bio: "",
-      photoUrl: "https://placehold.co/400x400?text=Panelist",
+      photoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Panelist",
       displayOrder: 1,
       isVisible: true
     },
@@ -122,7 +122,7 @@ export const defaultSiteData: SiteData = {
       sessionTitle: "TBD",
       sessionType: "workshop",
       bio: "",
-      photoUrl: "https://placehold.co/400x400?text=Speaker",
+      photoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Speaker",
       displayOrder: 2,
       isVisible: true
     },
@@ -134,7 +134,7 @@ export const defaultSiteData: SiteData = {
       sessionTitle: "TBD",
       sessionType: "workshop",
       bio: "",
-      photoUrl: "https://placehold.co/400x400?text=Speaker",
+      photoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Speaker",
       displayOrder: 3,
       isVisible: true
     },
@@ -146,7 +146,7 @@ export const defaultSiteData: SiteData = {
       sessionTitle: "TBD",
       sessionType: "workshop",
       bio: "",
-      photoUrl: "https://placehold.co/400x400?text=Speaker",
+      photoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Speaker",
       displayOrder: 4,
       isVisible: true
     },
@@ -158,7 +158,7 @@ export const defaultSiteData: SiteData = {
       sessionTitle: "TBD",
       sessionType: "workshop",
       bio: "",
-      photoUrl: "https://placehold.co/400x400?text=Speaker",
+      photoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Speaker",
       displayOrder: 5,
       isVisible: true
     },
@@ -170,7 +170,7 @@ export const defaultSiteData: SiteData = {
       sessionTitle: "TBD",
       sessionType: "workshop",
       bio: "",
-      photoUrl: "https://placehold.co/400x400?text=Speaker",
+      photoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Speaker",
       displayOrder: 6,
       isVisible: true
     },
@@ -182,7 +182,7 @@ export const defaultSiteData: SiteData = {
       sessionTitle: "TBD",
       sessionType: "workshop",
       bio: "",
-      photoUrl: "https://placehold.co/400x400?text=Speaker",
+      photoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Speaker",
       displayOrder: 7,
       isVisible: true
     },
@@ -194,7 +194,7 @@ export const defaultSiteData: SiteData = {
       sessionTitle: "TBD",
       sessionType: "workshop",
       bio: "",
-      photoUrl: "https://placehold.co/400x400?text=Speaker",
+      photoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Speaker",
       displayOrder: 8,
       isVisible: true
     }
@@ -205,7 +205,7 @@ export const defaultSiteData: SiteData = {
       name: "LBIS-TECH",
       tagline: "Learn-Innovate-Lead",
       websiteUrl: "#",
-      logoUrl: "https://placehold.co/300x150?text=LBIS-TECH",
+      logoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=LBIS-TECH",
       displayOrder: 1,
       isVisible: true
     },
@@ -214,7 +214,7 @@ export const defaultSiteData: SiteData = {
       name: "invozone",
       tagline: "",
       websiteUrl: "#",
-      logoUrl: "https://placehold.co/300x150?text=invozone",
+      logoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=invozone",
       displayOrder: 2,
       isVisible: true
     },
@@ -223,7 +223,7 @@ export const defaultSiteData: SiteData = {
       name: "TBD",
       tagline: "",
       websiteUrl: "#",
-      logoUrl: "https://placehold.co/300x150?text=Partner",
+      logoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Partner",
       displayOrder: 3,
       isVisible: true
     },
@@ -232,7 +232,7 @@ export const defaultSiteData: SiteData = {
       name: "HM Photography",
       tagline: "",
       websiteUrl: "#",
-      logoUrl: "https://placehold.co/300x150?text=HM+Photography",
+      logoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=HM+Photography",
       displayOrder: 4,
       isVisible: true
     }
@@ -243,7 +243,7 @@ export const defaultSiteData: SiteData = {
       name: "Abdul Wahab",
       role: "PRESIDENT ACM-UMT",
       organization: "UMT",
-      photoUrl: "https://placehold.co/200x200?text=Abdul+Wahab",
+      photoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Abdul+Wahab",
       displayOrder: 1,
       isVisible: true
     },
@@ -252,7 +252,7 @@ export const defaultSiteData: SiteData = {
       name: "Masroor Ahmad",
       role: "CLOUD CLUB CAPTAIN",
       organization: "UMT",
-      photoUrl: "https://placehold.co/200x200?text=Masroor+Ahmad",
+      photoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Masroor+Ahmad",
       displayOrder: 2,
       isVisible: true
     },
@@ -261,7 +261,7 @@ export const defaultSiteData: SiteData = {
       name: "Ahmad Hassan",
       role: "EVENT HEAD",
       organization: "UMT",
-      photoUrl: "https://placehold.co/200x200?text=Ahmad+Hassan",
+      photoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Ahmad+Hassan",
       displayOrder: 3,
       isVisible: true
     },
@@ -270,7 +270,7 @@ export const defaultSiteData: SiteData = {
       name: "Faizan Jallani",
       role: "CO-EVENT HEAD",
       organization: "UMT",
-      photoUrl: "https://placehold.co/200x200?text=Faizan+Jallani",
+      photoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Faizan+Jallani",
       displayOrder: 4,
       isVisible: true
     },
@@ -279,7 +279,7 @@ export const defaultSiteData: SiteData = {
       name: "Muhammad Hassan Ali",
       role: "LOGISTIC HEAD",
       organization: "UMT",
-      photoUrl: "https://placehold.co/200x200?text=Muhammad+Hassan+Ali",
+      photoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Muhammad+Hassan+Ali",
       displayOrder: 5,
       isVisible: true
     }

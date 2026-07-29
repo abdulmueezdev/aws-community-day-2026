@@ -9,6 +9,7 @@ import { cn } from '../lib/utils';
 export function FAQ() {
   const { faqs } = defaultSiteData;
   const visibleFaqs = faqs.filter(f => f.isPublished).sort((a, b) => a.displayOrder - b.displayOrder);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <section id="faq" className="py-24 px-6 bg-secondary border-b-[3px] border-black">
@@ -24,7 +25,12 @@ export function FAQ() {
 
         <div className="w-full flex flex-col gap-4">
           {visibleFaqs.map((faq, index) => (
-            <FAQItem key={faq.id} faq={faq} defaultOpen={index === 0} />
+            <FAQItem 
+              key={faq.id} 
+              faq={faq} 
+              isOpen={openIndex === index}
+              onToggle={() => setOpenIndex(openIndex === index ? null : index)} 
+            />
           ))}
         </div>
 
@@ -33,11 +39,9 @@ export function FAQ() {
   );
 }
 
-function FAQItem({ faq, defaultOpen = false }: { faq: any, defaultOpen?: boolean }) {
-  const [isOpen, setIsOpen] = useState(defaultOpen);
-
+function FAQItem({ faq, isOpen, onToggle }: { faq: any, isOpen: boolean, onToggle: () => void }) {
   return (
-    <NeoCard className="p-0 overflow-hidden cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
+    <NeoCard className="p-0 overflow-hidden cursor-pointer" onClick={onToggle}>
       <div className="p-6 flex items-center justify-between gap-4 select-none">
         <h3 className="font-heading font-semibold text-base md:text-lg">
           {faq.question}
