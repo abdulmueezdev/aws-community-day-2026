@@ -1,15 +1,38 @@
-# STATE: AWS Community Day 2026
+# STATE: Phase 8 - Admin Panel Enhancements
 
-## Current Phase
-**PHASE 7e: EMERGENCY FIXES**
+## Discuss
+What needs improvement in the admin panel:
+- Neo-brutalism design language is partially applied but missing on certain interactive elements and layouts.
+- Type safety is mostly okay but `any` might be used in some places; proper data binding to `siteData.ts` is required.
+- Form validation, error states, and empty states are lacking or very basic.
+- Consistency across manager pages is needed (ensuring + ADD buttons and confirm dialogs function correctly).
+- Accessibility issues (e.g., missing `aria-label`s on icon buttons).
 
-### ATOMIC TASKS
-- [ ] **Task 1: Navbar + Section Alignment** — Zero gap calculation, exact scroll-padding-top, remove ALL section top paddings.
-- [ ] **Task 2: Partner Marquee** — Auto-scroll left continuously, pause on hover, first card no text, smaller cards.
-- [ ] **Task 3: Card Fan Carousel** — Smaller cards (180x220px), smaller images (120x140px), reduced container height, add LinkedIn buttons inside text area.
-- [ ] **Task 4: Footer Verification** — Verify animated background is visible and creepy admin login button is present.
+## Plan
+Files to review and improve:
+1. `src/admin/pages/Dashboard.tsx`
+2. `src/admin/pages/Login.tsx`
+3. `src/admin/components/AdminSidebar.tsx`
+4. `src/admin/components/ExportConfig.tsx`
+5. `src/admin/pages/FAQManager.tsx`
+6. `src/admin/pages/HeroEditor.tsx`
+7. `src/admin/pages/OrganizersManager.tsx`
+8. `src/admin/pages/PartnersManager.tsx`
+9. `src/admin/pages/Settings.tsx`
+10. `src/admin/pages/SpeakersManager.tsx`
+11. `src/admin/pages/VenueEditor.tsx`
+12. `src/admin/components/AdminLayout.tsx`
+13. `src/admin/components/AdminTopbar.tsx`
+14. `src/admin/components/ConfirmDialog.tsx`
+15. `src/admin/components/ProtectedRoute.tsx`
+16. `src/admin/components/SpeakerModal.tsx`
+17. `src/admin/components/Toast.tsx`
 
-## Known Issues
-- Scroll gap persists in Partners, Team, Venue, FAQ sections (inner container padding).
-- Partner marquee not animating (needs proper motion.div implementation).
-- LinkedIn buttons missing on organizer cards.
+## Execute
+Fix one screen/component at a time, starting based on the audit.
+
+## Verify
+Build passes after every screen.
+
+## Ship
+Commit, push, redeploy.

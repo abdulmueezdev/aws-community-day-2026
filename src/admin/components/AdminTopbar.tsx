@@ -12,6 +12,7 @@ export function AdminTopbar({ onMenuClick, title }: AdminTopbarProps) {
       <div className="flex items-center gap-4">
         <button 
           onClick={onMenuClick}
+          aria-label="Toggle sidebar menu"
           className="lg:hidden p-2 hover:bg-secondary border-[3px] border-transparent hover:border-black transition-colors"
         >
           <Menu size={24} />

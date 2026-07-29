@@ -61,8 +61,8 @@ export function AdminSidebar({ isOpen, onClose }: { isOpen: boolean, onClose: ()
                 className={`
                   flex items-center gap-3 px-4 py-3 font-bold transition-colors
                   ${isActive 
-                    ? 'border-l-4 border-secondary bg-white text-black' 
-                    : 'text-gray-300 hover:text-white hover:bg-white/10 border-l-4 border-transparent'}
+                    ? 'border-l-[3px] border-black bg-secondary text-black' 
+                    : 'text-gray-300 hover:text-white hover:bg-white/10 border-l-[3px] border-transparent'}
                 `}
               >
                 <Icon size={20} className={isActive ? 'text-black' : ''} />
