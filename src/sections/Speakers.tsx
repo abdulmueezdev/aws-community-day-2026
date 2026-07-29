@@ -59,8 +59,8 @@ export function Speakers() {
 
 function SpeakerCard({ speaker, isLarge = false }: { speaker: any, isLarge?: boolean }) {
   return (
-    <div className={`bg-white border-[3px] border-black shadow-neo rounded-none overflow-hidden hover:-translate-y-1 hover:shadow-neo-hover transition-transform flex flex-col h-full ${isLarge ? 'max-w-sm' : ''}`}>
-      <div className={`relative ${isLarge ? 'flex-1 min-h-[280px]' : 'h-48'} w-full border-b-[3px] border-black bg-gray-200 overflow-hidden`}>
+    <div className={`bg-white border-[3px] border-black shadow-neo rounded-none overflow-hidden hover:-translate-y-1 hover:shadow-neo-hover transition-transform flex flex-col h-full`}>
+      <div className={`relative ${isLarge ? 'flex-1 min-h-[400px] md:min-h-[500px]' : 'h-48'} w-full border-b-[3px] border-black bg-gray-200 overflow-hidden`}>
         <img 
           src={speaker.photoUrl} 
           alt={speaker.name} 
@@ -69,7 +69,7 @@ function SpeakerCard({ speaker, isLarge = false }: { speaker: any, isLarge?: boo
           className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
         />
       </div>
-      <div className="bg-black p-4 text-white flex-grow flex flex-col justify-between rounded-none">
+      <div className={`bg-black ${isLarge ? 'p-6 md:p-8' : 'p-4'} text-white flex-grow flex flex-col justify-between rounded-none`}>
         <div>
           <h3 className="font-heading font-bold text-lg uppercase leading-tight mb-1 line-clamp-1" title={speaker.name}>{speaker.name}</h3>
           <p className="font-body text-xs text-gray-300 uppercase line-clamp-2" title={`${speaker.role} ${speaker.company !== 'TBD' ? `• ${speaker.company}` : ''}`}>
