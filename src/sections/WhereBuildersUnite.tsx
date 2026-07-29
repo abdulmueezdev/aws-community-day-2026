@@ -53,6 +53,8 @@ export function WhereBuildersUnite() {
                   <img 
                     src="https://placehold.co/600x400/FFFDF5/000000?text=Building+Illustration" 
                     alt="Building Illustration" 
+                    width="600"
+                    height="400"
                     className="w-full h-auto object-contain border-[3px] border-black rounded-none"
                   />
                 </div>

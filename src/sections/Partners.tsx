@@ -32,7 +32,9 @@ export function Partners() {
                   <img 
                     src={partner.logoUrl} 
                     alt={partner.name} 
-                    className="w-full max-w-[150px] h-auto object-contain rounded-none grayscale hover:grayscale-0 transition-all"
+                    width="300"
+                    height="150"
+                    className="w-full max-w-[150px] h-auto object-contain rounded-none grayscale hover:grayscale-0 transition-all duration-300"
                   />
                 </a>
                 {partner.tagline && (

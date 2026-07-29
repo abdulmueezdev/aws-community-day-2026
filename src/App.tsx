@@ -1,3 +1,4 @@
+import { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ReactLenis } from 'lenis/react';
 import { Navbar } from './components/Navbar';
@@ -9,17 +10,17 @@ import { Organizers } from './sections/Organizers';
 import { Venue } from './sections/Venue';
 import { FAQ } from './sections/FAQ';
 import { Footer } from './sections/Footer';
-import { AdminLayout } from './admin/components/AdminLayout';
-import { ProtectedRoute } from './admin/components/ProtectedRoute';
-import { Login } from './admin/pages/Login';
-import { Dashboard } from './admin/pages/Dashboard';
-import { HeroEditor } from './admin/pages/HeroEditor';
-import { SpeakersManager } from './admin/pages/SpeakersManager';
-import { PartnersManager } from './admin/pages/PartnersManager';
-import { FAQManager } from './admin/pages/FAQManager';
-import { OrganizersManager } from './admin/pages/OrganizersManager';
-import { VenueEditor } from './admin/pages/VenueEditor';
-import { Settings } from './admin/pages/Settings';
+const AdminLayout = lazy(() => import('./admin/components/AdminLayout').then(m => ({ default: m.AdminLayout })));
+const ProtectedRoute = lazy(() => import('./admin/components/ProtectedRoute').then(m => ({ default: m.ProtectedRoute })));
+const Login = lazy(() => import('./admin/pages/Login').then(m => ({ default: m.Login })));
+const Dashboard = lazy(() => import('./admin/pages/Dashboard').then(m => ({ default: m.Dashboard })));
+const HeroEditor = lazy(() => import('./admin/pages/HeroEditor').then(m => ({ default: m.HeroEditor })));
+const SpeakersManager = lazy(() => import('./admin/pages/SpeakersManager').then(m => ({ default: m.SpeakersManager })));
+const PartnersManager = lazy(() => import('./admin/pages/PartnersManager').then(m => ({ default: m.PartnersManager })));
+const FAQManager = lazy(() => import('./admin/pages/FAQManager').then(m => ({ default: m.FAQManager })));
+const OrganizersManager = lazy(() => import('./admin/pages/OrganizersManager').then(m => ({ default: m.OrganizersManager })));
+const VenueEditor = lazy(() => import('./admin/pages/VenueEditor').then(m => ({ default: m.VenueEditor })));
+const Settings = lazy(() => import('./admin/pages/Settings').then(m => ({ default: m.Settings })));
 
 function App() {
   return (
@@ -45,8 +46,8 @@ function App() {
         } />
         
         {/* Admin */}
-        <Route path="/admin/login" element={<Login />} />
-        <Route path="/admin" element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}>
+        <Route path="/admin/login" element={<Suspense fallback={<div>Loading...</div>}><Login /></Suspense>} />
+        <Route path="/admin" element={<Suspense fallback={<div>Loading...</div>}><ProtectedRoute><AdminLayout /></ProtectedRoute></Suspense>}>
           <Route index element={<Navigate to="dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="hero" element={<HeroEditor />} />

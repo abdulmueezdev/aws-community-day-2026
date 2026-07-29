@@ -18,7 +18,9 @@ export function Footer() {
             <img 
               src="https://placehold.co/150x50/000000/FFFFFF?text=LOGO" 
               alt="Logo" 
-              className="mb-6 rounded-none border-[3px] border-white"
+              width="150"
+              height="50"
+              className="mb-6 rounded-none border-[3px] border-white h-[50px] w-auto"
             />
             <p className="font-body text-gray-400 text-center max-w-md">
               {settings.seoDescription}

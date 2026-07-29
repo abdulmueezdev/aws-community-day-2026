@@ -71,7 +71,7 @@ export function Hero() {
             <p className="font-heading font-bold text-sm uppercase tracking-widest text-center mb-4">
               Event Begins In
             </p>
-            <div className="bg-secondary border-[3px] border-black shadow-neo p-6 md:p-8 rounded-none flex flex-wrap justify-center gap-4 md:gap-8">
+            <div className="bg-secondary border-[3px] border-black shadow-neo p-3 md:p-8 rounded-none grid grid-cols-4 gap-2 md:gap-8">
               <CountdownBox value={formatNumber(timeLeft.days)} label="Days" />
               <CountdownBox value={formatNumber(timeLeft.hours)} label="Hours" />
               <CountdownBox value={formatNumber(timeLeft.minutes)} label="Minutes" />
@@ -87,11 +87,11 @@ export function Hero() {
 
 function CountdownBox({ value, label }: { value: string, label: string }) {
   return (
-    <div className="flex flex-col items-center">
-      <NeoCard className="p-4 md:p-6 min-w-[80px] md:min-w-[100px] flex items-center justify-center mb-3">
-        <span className="font-mono font-bold text-4xl md:text-5xl text-black">{value}</span>
+    <div className="flex flex-col items-center w-full">
+      <NeoCard className="p-2 md:p-6 w-full flex items-center justify-center mb-2 md:mb-3">
+        <span className="font-mono font-bold text-2xl md:text-5xl text-black">{value}</span>
       </NeoCard>
-      <span className="font-heading font-bold text-sm uppercase tracking-wider text-black">{label}</span>
+      <span className="font-heading font-bold text-[10px] md:text-sm uppercase tracking-wider text-black">{label}</span>
     </div>
   );
 }

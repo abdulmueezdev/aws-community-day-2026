@@ -24,16 +24,18 @@ export function Organizers() {
           The passionate individuals working behind the scenes to make AWS Student Community Day Lahore a reality.
         </p>
 
-        {/* Horizontal scroll container for mobile, flex wrap for desktop */}
+        {/* Horizontal scroll container for mobile, flex wrap/grid for desktop */}
         <div className="w-full overflow-x-auto pb-8 -mb-8">
-          <StaggerContainer className="flex flex-row md:flex-wrap justify-start md:justify-center gap-6 min-w-max md:min-w-0 px-2">
+          <StaggerContainer className="flex md:grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-start md:justify-center gap-6 min-w-max md:min-w-0 px-2">
             {visibleOrganizers.map((org) => (
-              <StaggerItem key={org.id}>
-                <NeoCard className="flex flex-col items-center text-center min-w-[250px] max-w-[280px]">
+              <StaggerItem key={org.id} className="flex-shrink-0 w-[250px] md:w-auto">
+                <NeoCard className="flex flex-col items-center text-center w-full h-full">
                   <div className="w-32 h-32 rounded-full border-[3px] border-black shadow-neo-sm overflow-hidden mb-6 bg-gray-200">
                     <img 
                       src={org.photoUrl} 
                       alt={org.name} 
+                      width="400"
+                      height="400"
                       className="w-full h-full object-cover"
                     />
                   </div>

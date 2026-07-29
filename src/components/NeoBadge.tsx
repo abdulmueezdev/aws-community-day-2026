@@ -9,8 +9,8 @@ export function NeoBadge({ variant = 'primary', children, className, ...props }:
   const variants = {
     success: 'bg-success text-black',
     warning: 'bg-warning text-black',
-    danger: 'bg-danger text-white',
-    primary: 'bg-primary text-white',
+    danger: 'bg-danger text-black',
+    primary: 'bg-primary text-black',
     secondary: 'bg-secondary text-black',
   };
 

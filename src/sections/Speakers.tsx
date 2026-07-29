@@ -41,7 +41,7 @@ export function Speakers() {
           </NeoBadge>
 
           {/* Grid of 7 cards - 4 columns on large screens, or wrap */}
-          <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {workshopSpeakers.map((speaker) => (
               <StaggerItem key={speaker.id}>
                 <SpeakerCard speaker={speaker} />
@@ -62,13 +62,17 @@ function SpeakerCard({ speaker, isLarge = false }: { speaker: any, isLarge?: boo
         <img 
           src={speaker.photoUrl} 
           alt={speaker.name} 
-          className="w-full h-full object-cover rounded-none"
+          width="400"
+          height="400"
+          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
         />
       </div>
       <div className="bg-black p-4 text-white flex-grow flex flex-col justify-between rounded-none">
         <div>
-          <h3 className="font-heading font-bold text-lg uppercase leading-tight mb-1">{speaker.name}</h3>
-          <p className="font-body text-xs text-gray-300 uppercase">{speaker.role} {speaker.company !== 'TBD' && `• ${speaker.company}`}</p>
+          <h3 className="font-heading font-bold text-lg uppercase leading-tight mb-1 line-clamp-1" title={speaker.name}>{speaker.name}</h3>
+          <p className="font-body text-xs text-gray-300 uppercase line-clamp-2" title={`${speaker.role} ${speaker.company !== 'TBD' ? `• ${speaker.company}` : ''}`}>
+            {speaker.role} {speaker.company !== 'TBD' && `• ${speaker.company}`}
+          </p>
         </div>
       </div>
     </div>

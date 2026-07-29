@@ -24,7 +24,7 @@ export function Navbar() {
         
         {/* Left: Logo */}
         <div className="flex-shrink-0">
-          <img src="https://placehold.co/150x50/FFFDF5/000000?text=LOGO" alt="Logo" className="rounded-none border-[3px] border-black shadow-neo-sm h-12" />
+          <img src="https://placehold.co/150x50/FFFDF5/000000?text=LOGO" width="150" height="50" alt="Logo" className="rounded-none border-[3px] border-black shadow-neo-sm h-12 w-auto" />
         </div>
 
         {/* Right: Desktop Nav */}
@@ -45,6 +45,7 @@ export function Navbar() {
         <button 
           className="lg:hidden p-2 rounded-none border-[3px] border-black shadow-neo-sm bg-white"
           onClick={() => setIsOpen(true)}
+          aria-label="Open menu"
         >
           <Menu className="w-6 h-6" />
         </button>
@@ -64,6 +65,7 @@ export function Navbar() {
             <button 
               className="p-2 rounded-none border-[3px] border-black shadow-neo-sm bg-white"
               onClick={() => setIsOpen(false)}
+              aria-label="Close menu"
             >
               <X className="w-6 h-6" />
             </button>

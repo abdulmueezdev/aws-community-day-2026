@@ -9,11 +9,11 @@ export function Venue() {
 
   return (
     <section id="venue" className="py-24 px-6 bg-white border-b-[3px] border-black">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center">
         
         {/* Left Column: Details */}
         <ScrollReveal>
-          <div className="w-full lg:w-1/3 flex flex-col items-start">
+          <div className="w-full md:w-1/3 flex flex-col items-start">
             <NeoBadge variant="primary" className="mb-6">
               VENUE LOCATION
             </NeoBadge>
@@ -38,8 +38,8 @@ export function Venue() {
         </ScrollReveal>
 
         {/* Right Column: Map */}
-        <ScrollReveal delay={0.2}>
-          <div className="w-full lg:w-full">
+        <ScrollReveal delay={0.2} className="w-full md:w-2/3">
+          <div className="w-full">
             <NeoCard className="p-0 overflow-hidden w-full h-[400px]">
               <img 
                 src={event.venueMapEmbedUrl} 
