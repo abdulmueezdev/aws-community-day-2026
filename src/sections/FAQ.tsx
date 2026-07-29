@@ -12,7 +12,7 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-24 px-6 bg-secondary border-b-[3px] border-black">
+    <section id="faq" className="pb-24 px-6 bg-secondary border-b-[3px] border-black">
       <div className="max-w-4xl mx-auto flex flex-col items-center">
         
         <NeoBadge variant="primary" className="mb-6">

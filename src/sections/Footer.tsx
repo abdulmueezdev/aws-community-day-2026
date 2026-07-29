@@ -11,12 +11,13 @@ export function Footer() {
   return (
     <ScrollReveal>
       <footer className="relative bg-footer border-t-[3px] border-black overflow-hidden py-12 px-6">
-        {/* Animated Background */}
-        <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
-          {/* Floating shapes */}
-          <div className="absolute w-64 h-64 bg-primary/20 border-[3px] border-black -top-20 -left-20 animate-float" />
-          <div className="absolute w-48 h-48 bg-secondary/20 border-[3px] border-black top-1/2 -right-10 animate-float-delayed" />
-          <div className="absolute w-32 h-32 bg-tertiary/20 border-[3px] border-black bottom-10 left-1/3 animate-float-slow" />
+        {/* Animated Background Layer */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          {/* Floating neo-brutalist shapes */}
+          <div className="absolute w-72 h-72 bg-primary/30 border-[3px] border-black -top-24 -left-24 animate-float" />
+          <div className="absolute w-56 h-56 bg-secondary/30 border-[3px] border-black top-1/3 -right-16 animate-float-delayed" />
+          <div className="absolute w-40 h-40 bg-tertiary/30 border-[3px] border-black bottom-0 left-1/4 animate-float-slow" />
+          <div className="absolute w-64 h-64 bg-primary/20 border-[3px] border-black top-0 right-1/3 animate-float-reverse" />
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center">
@@ -56,12 +57,19 @@ export function Footer() {
   
         </div>
   
-        {/* Hidden Admin Button */}
-        <button 
-          onClick={handleAdminClick}
-          className="absolute bottom-2 right-2 w-1 h-1 opacity-0 cursor-default"
-          aria-label="Admin Login"
-        />
+        {/* Admin Login — Bottom Left */}
+        <div className="absolute bottom-4 left-4 z-20">
+          <button
+            onClick={handleAdminClick}
+            className="group relative px-4 py-2 bg-black border-[3px] border-black shadow-neo-sm overflow-hidden hover:shadow-neo transition-all"
+            aria-label="Admin Login"
+          >
+            <span className="relative z-10 font-heading text-xs font-bold uppercase tracking-wider text-white group-hover:text-black transition-colors">
+              Admin
+            </span>
+            <div className="absolute inset-0 bg-secondary transform -translate-x-full group-hover:translate-x-0 transition-transform duration-200" />
+          </button>
+        </div>
       </footer>
     </ScrollReveal>
   );

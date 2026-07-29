@@ -8,7 +8,7 @@ export function Organizers() {
   const visibleOrganizers = organizers.filter(o => o.isVisible).sort((a, b) => a.displayOrder - b.displayOrder);
 
   return (
-    <section id="team" className="py-24 px-6 bg-background border-b-[3px] border-black overflow-hidden">
+    <section id="team" className="pb-24 px-6 bg-background border-b-[3px] border-black overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
         
         <NeoBadge variant="primary" className="mb-6">

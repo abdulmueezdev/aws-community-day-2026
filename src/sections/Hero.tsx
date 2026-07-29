@@ -12,7 +12,7 @@ export function Hero() {
   const formatNumber = (num: number) => num.toString().padStart(2, '0');
 
   return (
-    <section id="home" className="relative min-h-[calc(100vh-80px)] flex items-center justify-center pt-16 pb-24 px-6 overflow-hidden bg-background">
+    <section id="home" className="relative min-h-[calc(100vh-80px)] flex items-center justify-center pb-24 px-6 overflow-hidden bg-background">
       {/* Background Canvas — hidden on mobile */}
       <div className="absolute inset-0 z-0 hidden md:block">
         <SkiperCrowd className="w-full h-full" />

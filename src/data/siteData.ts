@@ -30,6 +30,7 @@ export interface Organizer {
   role: string;
   organization: string;
   photoUrl: string;
+  linkedin?: string;
   displayOrder: number;
   isVisible: boolean;
 }
@@ -244,6 +245,7 @@ export const defaultSiteData: SiteData = {
       role: "PRESIDENT ACM-UMT",
       organization: "UMT",
       photoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Abdul+Wahab",
+      linkedin: "https://linkedin.com/in/abdulwahab",
       displayOrder: 1,
       isVisible: true
     },
@@ -253,6 +255,7 @@ export const defaultSiteData: SiteData = {
       role: "CLOUD CLUB CAPTAIN",
       organization: "UMT",
       photoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Masroor+Ahmad",
+      linkedin: "https://linkedin.com/in/masroorahmad",
       displayOrder: 2,
       isVisible: true
     },

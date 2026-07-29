@@ -11,7 +11,7 @@ export function Speakers() {
   const workshopSpeakers = speakers.filter(s => s.sessionType === 'workshop' && s.isVisible).sort((a, b) => a.displayOrder - b.displayOrder);
 
   return (
-    <section id="speakers" className="py-24 px-6 bg-tertiary border-b-[3px] border-black">
+    <section id="speakers" className="pb-24 px-6 bg-tertiary border-b-[3px] border-black">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16">
         
         {/* Left Column: Panel Discussion */}

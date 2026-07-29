@@ -10,7 +10,7 @@ export function Partners() {
   const visiblePartners = partners.filter(p => p.isVisible).sort((a, b) => a.displayOrder - b.displayOrder);
 
   return (
-    <section id="partners" className="py-24 px-6 bg-background border-b-[3px] border-black">
+    <section id="partners" className="pb-24 px-6 bg-background border-b-[3px] border-black">
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
         
         <NeoBadge variant="primary" className="mb-6">

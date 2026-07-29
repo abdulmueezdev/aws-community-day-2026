@@ -7,7 +7,7 @@ export function Venue() {
   const { event } = defaultSiteData;
 
   return (
-    <section id="venue" className="py-24 px-6 bg-white border-b-[3px] border-black">
+    <section id="venue" className="pb-24 px-6 bg-white border-b-[3px] border-black">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center">
         
         {/* Left Column: Details */}
