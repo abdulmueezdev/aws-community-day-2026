@@ -1,9 +1,15 @@
-# Phase 8: Admin Panel Enhancements
+# STATE: AWS Community Day 2026
 
-## Atomic Tasks
-- [ ] Task 1: Dashboard.tsx — Add real data binding from siteData.ts, improve stat cards with icons
-- [ ] Task 2: Login.tsx — Add form validation (non-empty password), error message styling
-- [ ] Task 3: AdminSidebar.tsx — Ensure active state uses correct design tokens
-- [ ] Task 4: ExportConfig.tsx — Ensure data: SiteData type (not any), add copy success feedback
-- [ ] Task 5: All Manager pages — Ensure + ADD buttons work, confirm dialogs trigger correctly
-- [ ] Task 6: Mobile responsive — Test admin panel at 375px, ensure sidebar overlay works
+## Current Phase
+**PHASE 7e: EMERGENCY FIXES**
+
+### ATOMIC TASKS
+- [ ] **Task 1: Navbar + Section Alignment** — Zero gap calculation, exact scroll-padding-top, remove ALL section top paddings.
+- [ ] **Task 2: Partner Marquee** — Auto-scroll left continuously, pause on hover, first card no text, smaller cards.
+- [ ] **Task 3: Card Fan Carousel** — Smaller cards (180x220px), smaller images (120x140px), reduced container height, add LinkedIn buttons inside text area.
+- [ ] **Task 4: Footer Verification** — Verify animated background is visible and creepy admin login button is present.
+
+## Known Issues
+- Scroll gap persists in Partners, Team, Venue, FAQ sections (inner container padding).
+- Partner marquee not animating (needs proper motion.div implementation).
+- LinkedIn buttons missing on organizer cards.

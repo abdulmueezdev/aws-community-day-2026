@@ -43,8 +43,12 @@
 }
 
 html {
-  scroll-padding-top: 80px; /* Match navbar height exactly */
+  scroll-padding-top: 84px; /* Navbar h-20 (80px) + border-b-[3px] (3px) + 1px buffer */
   scroll-behavior: smooth;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
 }
 
 @keyframes float {

@@ -10,7 +10,7 @@ export function Footer() {
 
   return (
     <ScrollReveal>
-      <footer className="relative bg-footer border-t-[3px] border-black overflow-hidden py-12 px-6">
+      <footer className="relative bg-footer border-t-[3px] border-black overflow-hidden pb-12 pt-0 px-6">
         {/* Animated Background Layer */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           {/* Floating neo-brutalist shapes */}

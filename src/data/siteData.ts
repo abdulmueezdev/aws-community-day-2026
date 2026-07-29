@@ -265,6 +265,7 @@ export const defaultSiteData: SiteData = {
       role: "EVENT HEAD",
       organization: "UMT",
       photoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Ahmad+Hassan",
+      linkedin: "https://linkedin.com/in/example",
       displayOrder: 3,
       isVisible: true
     },
@@ -274,6 +275,7 @@ export const defaultSiteData: SiteData = {
       role: "CO-EVENT HEAD",
       organization: "UMT",
       photoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Faizan+Jallani",
+      linkedin: "https://linkedin.com/in/example2",
       displayOrder: 4,
       isVisible: true
     },
