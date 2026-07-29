@@ -12,7 +12,7 @@ export function Speakers() {
 
   return (
     <section id="speakers" className="pb-24 px-6 bg-tertiary border-b-[3px] border-black">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 pt-0">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 pt-10">
         
         {/* Left Column: Panel Discussion */}
         <ScrollReveal delay={0}>

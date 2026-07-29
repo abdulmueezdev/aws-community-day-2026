@@ -9,7 +9,7 @@ export function Organizers() {
 
   return (
     <section id="team" className="pb-24 px-6 bg-background border-b-[3px] border-black overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col items-center text-center pt-0">
+      <div className="max-w-7xl mx-auto flex flex-col items-center text-center pt-10">
         
         <NeoBadge variant="primary" className="mb-6">
           ORGANIZERS

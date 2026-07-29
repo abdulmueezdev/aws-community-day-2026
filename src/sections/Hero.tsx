@@ -18,7 +18,7 @@ export function Hero() {
         <SkiperCrowd className="w-full h-full" />
       </div>
 
-      <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center pt-0">
+      <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center pt-10">
         
         {/* Logo Cluster */}
         <ScrollReveal>

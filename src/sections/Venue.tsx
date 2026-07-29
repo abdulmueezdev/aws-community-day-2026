@@ -8,7 +8,7 @@ export function Venue() {
 
   return (
     <section id="venue" className="pb-24 px-6 bg-white border-b-[3px] border-black">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center pt-0">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center pt-10">
         
         {/* Left Column: Details */}
         <ScrollReveal>
