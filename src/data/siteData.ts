@@ -55,6 +55,7 @@ export interface SiteData {
     primaryButtonLink: string;
     secondaryButtonText: string;
     secondaryButtonDisabled: boolean;
+    secondaryButtonLink: string;
     venueName: string;
     venueAddress: string;
     venueCity: string;
@@ -94,6 +95,7 @@ export const defaultSiteData: SiteData = {
     primaryButtonLink: "#agenda",
     secondaryButtonText: "REGISTRATION CLOSED",
     secondaryButtonDisabled: true,
+    secondaryButtonLink: "#",
     venueName: "Indigo Heights",
     venueAddress: "3 C3, Near Jehan Road, Gulberg III",
     venueCity: "Lahore",

@@ -8,6 +8,13 @@ import { useSiteData } from '../../context/SiteDataContext';
 export function HeroEditor() {
   const { siteData, updateSiteData, isOverride, resetToDefaults } = useSiteData();
   const [heroData, setHeroData] = useState(siteData.event);
+  const [toast, setToast] = useState<{ type: string; message: string } | null>(null);
+
+  const handleSave = () => {
+    updateSiteData({ event: heroData } as any);
+    setToast({ type: 'success', message: 'Hero section saved!' });
+    setTimeout(() => setToast(null), 3000);
+  };
   
   const handleUpdate = (field: keyof typeof heroData, value: string | boolean) => {
     setHeroData(prev => {
@@ -19,19 +26,27 @@ export function HeroEditor() {
 
   return (
     <div className="flex flex-col gap-8">
-      {isOverride && (
-        <div className="flex justify-end">
+      <div className="flex justify-end gap-4">
+        <button
+          onClick={handleSave}
+          className="px-6 py-2 bg-success text-white border-[3px] border-black shadow-neo-sm font-heading text-xs uppercase rounded-none hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
+        >
+          Save Changes
+        </button>
+        {isOverride && (
           <button
             onClick={() => {
               resetToDefaults();
               setHeroData(defaultSiteData.event);
+              setToast({ type: 'info', message: 'Reset to defaults' });
+              setTimeout(() => setToast(null), 3000);
             }}
             className="px-4 py-2 bg-danger text-white border-[3px] border-black shadow-neo-sm font-heading text-xs uppercase rounded-none hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
           >
             Reset to Defaults
           </button>
-        </div>
-      )}
+        )}
+      </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="flex flex-col gap-8">
           <NeoCard className="bg-white p-6">
@@ -75,6 +90,12 @@ export function HeroEditor() {
                 value={heroData.secondaryButtonText} 
                 onChange={(e) => handleUpdate('secondaryButtonText', e.target.value)} 
               />
+              <NeoInput 
+                label="Secondary Button Link" 
+                value={heroData.secondaryButtonLink} 
+                onChange={(e) => handleUpdate('secondaryButtonLink', e.target.value)} 
+                placeholder="https://example.com"
+              />
               <div className="flex items-center gap-4 mt-2">
                 <input 
                   type="checkbox" 
@@ -117,6 +138,14 @@ export function HeroEditor() {
           </NeoCard>
         </div>
       </div>
+      
+      {toast && (
+        <div className={`fixed bottom-6 right-6 z-50 px-6 py-3 border-[3px] border-black shadow-neo font-heading font-bold text-sm uppercase rounded-none ${
+          toast.type === 'success' ? 'bg-success text-white' : 'bg-primary text-white'
+        }`}>
+          {toast.message}
+        </div>
+      )}
     </div>
   );
 }

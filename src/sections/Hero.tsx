@@ -42,6 +42,13 @@ export function Hero() {
               <span className="uppercase">{event.location}</span>
               <span>&mdash;&mdash;</span>
             </div>
+
+            {/* Date & Time */}
+            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 mt-4">
+              <span className="font-heading font-bold text-lg md:text-xl text-black uppercase">{event.date}</span>
+              <span className="hidden sm:block text-black font-bold">|</span>
+              <span className="font-mono font-bold text-lg md:text-xl text-primary">{event.time}</span>
+            </div>
           </div>
         </ScrollReveal>
 
@@ -60,7 +67,7 @@ export function Hero() {
             <NeoButton variant="primary" href={event.primaryButtonLink} className="w-full sm:w-auto">
               {event.primaryButtonText}
             </NeoButton>
-            <NeoButton variant="secondary" disabled={event.secondaryButtonDisabled} className="w-full sm:w-auto">
+            <NeoButton variant="secondary" href={event.secondaryButtonLink} disabled={event.secondaryButtonDisabled} className="w-full sm:w-auto">
               {event.secondaryButtonText}
             </NeoButton>
           </div>

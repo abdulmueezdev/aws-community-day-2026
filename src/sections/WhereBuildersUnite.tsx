@@ -51,7 +51,7 @@ export function WhereBuildersUnite() {
               <div className="mt-8 relative z-0 w-full flex justify-center">
                 <div className="bg-background border-[3px] border-black p-4 w-full max-w-md mx-auto shadow-neo rounded-none">
                   <img 
-                    src="https://placehold.co/600x400/FFFDF5/000000?text=Building+Illustration" 
+                    src="/images/hero-building.png" 
                     alt="Building Illustration" 
                     width="600"
                     height="400"
