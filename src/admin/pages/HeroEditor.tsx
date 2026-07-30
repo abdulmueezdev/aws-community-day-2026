@@ -16,6 +16,57 @@ export function HeroEditor() {
     setTimeout(() => setToast(null), 3000);
   };
   
+  const syncCountdownTarget = (dateStr: string, timeStr: string) => {
+    try {
+      // Parse display date: "September 11th, 2026" → Date object
+      const cleaned = dateStr.replace(/(\d+)(st|nd|rd|th)/gi, '$1');
+      const parsed = new Date(cleaned);
+      if (isNaN(parsed.getTime())) return;
+  
+      // Parse display time: "9AM — 4PM" → extract start hour
+      const timeMatch = timeStr.match(/(\d{1,2})\s*(AM|PM)/i);
+      let hours = 10; // default fallback
+      if (timeMatch) {
+        hours = parseInt(timeMatch[1], 10);
+        const period = timeMatch[2].toUpperCase();
+        if (period === 'PM' && hours !== 12) hours += 12;
+        if (period === 'AM' && hours === 12) hours = 0;
+      }
+      parsed.setHours(hours, 0, 0, 0);
+  
+      // Build ISO string with PKT offset (+05:00)
+      const iso = parsed.toISOString().slice(0, 19) + '+05:00';
+      
+      setHeroData(prev => {
+        const updated = { ...prev, countdownTarget: iso };
+        updateSiteData({ event: updated } as any);
+        return updated;
+      });
+    } catch {
+      // Silent fail — user can manually edit countdown target
+    }
+  };
+  
+  const handleDateChange = (value: string) => {
+    setHeroData(prev => {
+      const updated = { ...prev, date: value };
+      updateSiteData({ event: updated } as any);
+      return updated;
+    });
+    // Auto-sync countdown target
+    syncCountdownTarget(value, heroData.time);
+  };
+  
+  const handleTimeChange = (value: string) => {
+    setHeroData(prev => {
+      const updated = { ...prev, time: value };
+      updateSiteData({ event: updated } as any);
+      return updated;
+    });
+    // Auto-sync countdown target
+    syncCountdownTarget(heroData.date, value);
+  };
+
   const handleUpdate = (field: keyof typeof heroData, value: string | boolean) => {
     setHeroData(prev => {
       const updated = { ...prev, [field]: value };
@@ -120,12 +171,12 @@ export function HeroEditor() {
                 <NeoInput 
                   label="Display Date" 
                   value={heroData.date} 
-                  onChange={(e) => handleUpdate('date', e.target.value)} 
+                  onChange={(e) => handleDateChange(e.target.value)} 
                 />
                 <NeoInput 
                   label="Display Time" 
                   value={heroData.time} 
-                  onChange={(e) => handleUpdate('time', e.target.value)} 
+                  onChange={(e) => handleTimeChange(e.target.value)} 
                 />
               </div>
               <NeoInput 
@@ -134,6 +185,9 @@ export function HeroEditor() {
                 onChange={(e) => handleUpdate('countdownTarget', e.target.value)} 
                 placeholder="2026-09-09T10:00:00+05:00"
               />
+              <p className="text-xs text-textSecondary mt-1 font-body">
+                Auto-synced from Display Date & Time. Edit manually only if needed.
+              </p>
             </div>
           </NeoCard>
         </div>

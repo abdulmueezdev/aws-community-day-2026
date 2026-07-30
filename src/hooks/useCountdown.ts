@@ -8,25 +8,25 @@ interface TimeLeft {
 }
 
 export function useCountdown(targetDate: string): TimeLeft {
-  const calculateTimeLeft = () => {
+  const calculateTimeLeft = (): TimeLeft => {
     const difference = +new Date(targetDate) - +new Date();
-    let timeLeft: TimeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
-
-    if (difference > 0) {
-      timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      };
+    if (difference <= 0) {
+      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
     }
-
-    return timeLeft;
+    return {
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((difference / 1000 / 60) % 60),
+      seconds: Math.floor((difference / 1000) % 60),
+    };
   };
 
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft);
 
   useEffect(() => {
+    // IMMEDIATE recalculation when targetDate changes
+    setTimeLeft(calculateTimeLeft());
+
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
