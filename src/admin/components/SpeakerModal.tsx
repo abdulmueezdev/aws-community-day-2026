@@ -11,16 +11,17 @@ interface SpeakerModalProps {
   onClose: () => void;
   speaker?: Speaker;
   onSave: (speaker: Speaker) => void;
+  defaultSessionType?: 'panel' | 'workshop' | 'keynote';
 }
 
-export function SpeakerModal({ isOpen, onClose, speaker, onSave }: SpeakerModalProps) {
+export function SpeakerModal({ isOpen, onClose, speaker, onSave, defaultSessionType }: SpeakerModalProps) {
   const [formData, setFormData] = useState<Speaker>(speaker || {
     id: '',
     name: '',
     role: '',
     company: '',
     sessionTitle: '',
-    sessionType: 'keynote',
+    sessionType: defaultSessionType || 'workshop',
     bio: '',
     photoUrl: '',
     socialTwitter: '',
@@ -37,7 +38,7 @@ export function SpeakerModal({ isOpen, onClose, speaker, onSave }: SpeakerModalP
       role: '',
       company: '',
       sessionTitle: '',
-      sessionType: 'keynote',
+      sessionType: defaultSessionType || 'workshop',
       bio: '',
       photoUrl: '',
       socialTwitter: '',
@@ -122,14 +123,15 @@ export function SpeakerModal({ isOpen, onClose, speaker, onSave }: SpeakerModalP
                     onChange={e => setFormData({...formData, role: e.target.value})} 
                   />
                   <div className="flex flex-col gap-2">
-                    <label className="font-heading font-black text-lg uppercase">Session Type</label>
-                    <select className="rounded-none w-full p-3 border-[3px] border-black shadow-neo-sm font-bold outline-none focus:shadow-neo-hover transition-all bg-white"
+                    <label className="block font-heading font-bold text-sm uppercase mb-2">Session Type</label>
+                    <select
                       value={formData.sessionType}
-                      onChange={e => setFormData({...formData, sessionType: e.target.value as "panel" | "workshop" | "keynote"})}
+                      onChange={(e) => setFormData({...formData, sessionType: e.target.value as 'panel' | 'workshop' | 'keynote'})}
+                      className="w-full px-4 py-3 border-[3px] border-black bg-white font-body text-sm shadow-neo-sm rounded-none focus:outline-none focus:shadow-neo"
                     >
-                      <option value="keynote">Keynote</option>
-                      <option value="panel">Panel</option>
                       <option value="workshop">Workshop</option>
+                      <option value="panel">Panel</option>
+                      <option value="keynote">Keynote</option>
                     </select>
                   </div>
                 </div>

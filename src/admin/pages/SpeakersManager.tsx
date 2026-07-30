@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Pencil, Trash2, Eye, EyeOff } from 'lucide-react';
 import { NeoButton } from '../../components/NeoButton';
 import { NeoCard } from '../../components/NeoCard';
-import { NeoBadge } from '../../components/NeoBadge';
 import { SpeakerModal } from '../components/SpeakerModal';
 import { ConfirmDialog } from '../components/ConfirmDialog';
 import { useSiteData } from '../../context/SiteDataContext';
@@ -11,15 +10,16 @@ import type { Speaker } from '../../data/siteData';
 export function SpeakersManager() {
   const { siteData, updateSiteData, isOverride, resetToDefaults } = useSiteData();
   const speakers = siteData.speakers;
-  const [filter, setFilter] = useState('All');
+  const [activeType, setActiveType] = useState<'all' | 'panel' | 'workshop' | 'keynote'>('all');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingSpeaker, setEditingSpeaker] = useState<Speaker | null>(null);
   
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
-  const filteredSpeakers = speakers.filter(s => filter === 'All' || s.sessionType.toLowerCase() === filter.toLowerCase());
-
+  const filteredSpeakers = activeType === 'all'
+    ? speakers
+    : speakers.filter(s => s.sessionType === activeType);
   const [toast, setToast] = useState<{ type: string; message: string } | null>(null);
   const showToast = (type: string, message: string) => {
     setToast({ type, message });
@@ -77,17 +77,18 @@ export function SpeakersManager() {
         )}
       </div>
 
-      <div className="flex gap-2 overflow-x-auto pb-2">
-        {['All', 'Keynote', 'Panel', 'Workshop'].map(tab => (
+      <div className="flex gap-2 mb-6 flex-wrap">
+        {(['all', 'panel', 'workshop', 'keynote'] as const).map(type => (
           <button
-            key={tab}
-            onClick={() => setFilter(tab)}
-            className={`
-              px-4 py-2 font-bold border-[3px] border-black transition-colors whitespace-nowrap
-              ${filter === tab ? 'bg-black text-white' : 'bg-white hover:bg-gray-100 shadow-neo-sm'}
-            `}
+            key={type}
+            onClick={() => setActiveType(type)}
+            className={`px-4 py-2 border-[3px] border-black font-heading font-bold text-sm uppercase transition-all ${
+              activeType === type
+                ? 'bg-primary text-white shadow-neo-sm'
+                : 'bg-white text-black shadow-neo hover:bg-gray-100'
+            }`}
           >
-            {tab}
+            {type === 'all' ? 'All Speakers' : type === 'panel' ? 'Panelists' : type === 'workshop' ? 'Workshops' : 'Keynotes'}
           </button>
         ))}
       </div>
@@ -102,9 +103,11 @@ export function SpeakersManager() {
                 <div className="w-full h-full flex items-center justify-center font-bold text-gray-400">No Image</div>
               )}
               <div className="absolute top-2 right-2">
-                <NeoBadge className={speaker.sessionType === 'keynote' ? 'bg-primary' : speaker.sessionType === 'panel' ? 'bg-tertiary' : 'bg-secondary'}>
-                  {speaker.sessionType.toUpperCase()}
-                </NeoBadge>
+                <span className={`px-2 py-1 border-[2px] border-black font-heading text-xs uppercase font-bold ${
+                  speaker.sessionType === 'panel' ? 'bg-secondary' : speaker.sessionType === 'workshop' ? 'bg-primary' : 'bg-tertiary'
+                } text-white`}>
+                  {speaker.sessionType}
+                </span>
               </div>
             </div>
             
@@ -153,6 +156,7 @@ export function SpeakersManager() {
         onClose={() => setIsModalOpen(false)} 
         speaker={editingSpeaker || undefined}
         onSave={handleSave}
+        defaultSessionType={activeType === 'all' ? 'workshop' : activeType}
       />
 
       <ConfirmDialog
