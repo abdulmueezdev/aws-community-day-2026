@@ -23,7 +23,7 @@
 ## Sections Wired to Context (Live Binding)
 - ✅ Hero.tsx — reads date, time, countdownTarget, title, location, tagline, buttons
 - ✅ WhereBuildersUnite.tsx — reads date, time, venueName, venueAddress, location
-- 🔴 Speakers.tsx — still uses defaultSiteData
+- ✅ Speakers.tsx — reads speakers from context, filters by isVisible and sessionType
 - 🔴 Partners.tsx — still uses defaultSiteData
 - 🔴 Organizers.tsx — still uses defaultSiteData
 - 🔴 FAQ.tsx — still uses defaultSiteData
@@ -31,7 +31,8 @@
 
 ## Admin Editors Wired to Context
 - ✅ HeroEditor.tsx — auto-syncs display date/time to countdown target, save button with toast
-- 🔴 SpeakersManager.tsx — still uses local state only
+- ✅ SpeakersManager.tsx — full CRUD (add, edit, delete, toggle visibility) via context
+- ✅ SpeakerModal.tsx — handles add/edit modes, validation, all Speaker fields
 - 🔴 PartnersManager.tsx — still uses local state only
 - 🔴 OrganizersManager.tsx — still uses local state only
 - 🔴 FAQManager.tsx — still uses local state only

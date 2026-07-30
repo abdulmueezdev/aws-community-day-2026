@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Upload } from 'lucide-react';
 import { NeoCard } from '../../components/NeoCard';
@@ -23,9 +23,41 @@ export function SpeakerModal({ isOpen, onClose, speaker, onSave }: SpeakerModalP
     sessionType: 'keynote',
     bio: '',
     photoUrl: '',
+    socialTwitter: '',
+    socialLinkedin: '',
+    socialGithub: '',
     isVisible: true,
     displayOrder: 1,
   });
+
+  useEffect(() => {
+    setFormData(speaker || {
+      id: '',
+      name: '',
+      role: '',
+      company: '',
+      sessionTitle: '',
+      sessionType: 'keynote',
+      bio: '',
+      photoUrl: '',
+      socialTwitter: '',
+      socialLinkedin: '',
+      socialGithub: '',
+      displayOrder: 1,
+      isVisible: true,
+    });
+  }, [speaker, isOpen]);
+
+  const [error, setError] = useState('');
+
+  const handleSaveClick = () => {
+    if (!formData.name.trim() || !formData.sessionTitle.trim()) {
+      setError('Name and Session Title are required');
+      return;
+    }
+    setError('');
+    onSave(formData);
+  };
 
   return (
     <AnimatePresence>
@@ -116,6 +148,34 @@ export function SpeakerModal({ isOpen, onClose, speaker, onSave }: SpeakerModalP
                   />
                 </div>
 
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <NeoInput 
+                    label="Twitter URL" 
+                    value={formData.socialTwitter || ''} 
+                    onChange={e => setFormData({...formData, socialTwitter: e.target.value})} 
+                    placeholder="https://twitter.com/..."
+                  />
+                  <NeoInput 
+                    label="LinkedIn URL" 
+                    value={formData.socialLinkedin || ''} 
+                    onChange={e => setFormData({...formData, socialLinkedin: e.target.value})} 
+                    placeholder="https://linkedin.com/in/..."
+                  />
+                  <NeoInput 
+                    label="GitHub URL" 
+                    value={formData.socialGithub || ''} 
+                    onChange={e => setFormData({...formData, socialGithub: e.target.value})} 
+                    placeholder="https://github.com/..."
+                  />
+                </div>
+
+                <NeoInput 
+                  label="Display Order" 
+                  value={String(formData.displayOrder)} 
+                  onChange={e => setFormData({...formData, displayOrder: parseInt(e.target.value) || 0})} 
+                  type="number"
+                />
+
                 <div className="flex items-center gap-4 mt-2">
                   <input 
                     type="checkbox" 
@@ -129,9 +189,15 @@ export function SpeakerModal({ isOpen, onClose, speaker, onSave }: SpeakerModalP
                   </label>
                 </div>
 
+                {error && (
+                  <div className="px-4 py-2 bg-danger text-white border-[3px] border-black font-heading font-bold text-sm uppercase rounded-none">
+                    {error}
+                  </div>
+                )}
+
                 <div className="flex justify-end gap-4 mt-6">
                   <NeoButton variant="secondary" onClick={onClose}>Cancel</NeoButton>
-                  <NeoButton variant="primary" onClick={() => onSave(formData)}>Save Speaker</NeoButton>
+                  <NeoButton variant="primary" onClick={handleSaveClick}>Save Speaker</NeoButton>
                 </div>
               </div>
             </NeoCard>

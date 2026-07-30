@@ -5,10 +5,12 @@ import { NeoCard } from '../../components/NeoCard';
 import { NeoBadge } from '../../components/NeoBadge';
 import { SpeakerModal } from '../components/SpeakerModal';
 import { ConfirmDialog } from '../components/ConfirmDialog';
-import { defaultSiteData, type Speaker } from '../../data/siteData';
+import { useSiteData } from '../../context/SiteDataContext';
+import type { Speaker } from '../../data/siteData';
 
 export function SpeakersManager() {
-  const [speakers, setSpeakers] = useState(defaultSiteData.speakers);
+  const { siteData, updateSiteData, isOverride, resetToDefaults } = useSiteData();
+  const speakers = siteData.speakers;
   const [filter, setFilter] = useState('All');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingSpeaker, setEditingSpeaker] = useState<Speaker | null>(null);
@@ -18,11 +20,19 @@ export function SpeakersManager() {
 
   const filteredSpeakers = speakers.filter(s => filter === 'All' || s.sessionType.toLowerCase() === filter.toLowerCase());
 
+  const [toast, setToast] = useState<{ type: string; message: string } | null>(null);
+  const showToast = (type: string, message: string) => {
+    setToast({ type, message });
+    setTimeout(() => setToast(null), 3000);
+  };
+
   const handleSave = (speakerData: Speaker) => {
     if (editingSpeaker) {
-      setSpeakers(speakers.map(s => s.id === speakerData.id ? speakerData : s));
+      updateSiteData({ speakers: speakers.map(s => s.id === speakerData.id ? speakerData : s) } as any);
+      showToast('success', 'Speaker updated!');
     } else {
-      setSpeakers([...speakers, { ...speakerData, id: Date.now().toString() }]);
+      updateSiteData({ speakers: [...speakers, { ...speakerData, id: crypto.randomUUID() }] } as any);
+      showToast('success', 'Speaker added!');
     }
     setIsModalOpen(false);
     setEditingSpeaker(null);
@@ -30,7 +40,8 @@ export function SpeakersManager() {
 
   const handleDelete = () => {
     if (deletingId) {
-      setSpeakers(speakers.filter(s => s.id !== deletingId));
+      updateSiteData({ speakers: speakers.filter(s => s.id !== deletingId) } as any);
+      showToast('success', 'Speaker deleted!');
     }
     setIsConfirmOpen(false);
     setDeletingId(null);
@@ -50,6 +61,20 @@ export function SpeakersManager() {
         >
           + ADD SPEAKER
         </NeoButton>
+      </div>
+
+      <div className="flex justify-end gap-4 mb-2">
+        {isOverride && (
+          <button
+            onClick={() => {
+              resetToDefaults();
+              showToast('info', 'Reset to defaults');
+            }}
+            className="px-4 py-2 bg-danger text-white border-[3px] border-black shadow-neo-sm font-heading text-xs uppercase rounded-none hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
+          >
+            Reset to Defaults
+          </button>
+        )}
       </div>
 
       <div className="flex gap-2 overflow-x-auto pb-2">
@@ -97,7 +122,8 @@ export function SpeakersManager() {
               <button 
                 className="p-2 hover:bg-gray-200 border-[3px] border-transparent hover:border-black transition-colors"
                 onClick={() => {
-                  setSpeakers(speakers.map(s => s.id === speaker.id ? { ...s, isVisible: !s.isVisible } : s));
+                  updateSiteData({ speakers: speakers.map(s => s.id === speaker.id ? { ...s, isVisible: !s.isVisible } : s) } as any);
+                  showToast('info', speaker.isVisible ? 'Speaker hidden' : 'Speaker visible');
                 }}
                 title="Toggle Visibility"
               >
@@ -137,6 +163,13 @@ export function SpeakersManager() {
         onCancel={() => setIsConfirmOpen(false)}
       />
 
+      {toast && (
+        <div className={`fixed bottom-6 right-6 z-50 px-6 py-3 border-[3px] border-black shadow-neo font-heading font-bold text-sm uppercase rounded-none ${
+          toast.type === 'success' ? 'bg-success text-white' : 'bg-primary text-white'
+        }`}>
+          {toast.message}
+        </div>
+      )}
     </div>
   );
 }

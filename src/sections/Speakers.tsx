@@ -1,11 +1,13 @@
-import { defaultSiteData } from '../data/siteData';
+import { useSiteData } from '../context/SiteDataContext';
+import type { Speaker } from '../data/siteData';
 import { NeoBadge } from '../components/NeoBadge';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { StaggerContainer } from '../components/StaggerContainer';
 import { StaggerItem } from '../components/StaggerItem';
 
 export function Speakers() {
-  const { speakers } = defaultSiteData;
+  const { siteData } = useSiteData();
+  const speakers = siteData.speakers;
 
   const panelSpeaker = speakers.find(s => s.sessionType === 'panel' && s.isVisible);
   const workshopSpeakers = speakers.filter(s => s.sessionType === 'workshop' && s.isVisible).sort((a, b) => a.displayOrder - b.displayOrder);
@@ -57,7 +59,7 @@ export function Speakers() {
   );
 }
 
-function SpeakerCard({ speaker, isLarge = false }: { speaker: any, isLarge?: boolean }) {
+function SpeakerCard({ speaker, isLarge = false }: { speaker: Speaker, isLarge?: boolean }) {
   return (
     <div className={`bg-white border-[3px] border-black shadow-neo rounded-none overflow-hidden hover:-translate-y-1 hover:shadow-neo-hover transition-transform flex flex-col h-full`}>
       <div className={`relative ${isLarge ? 'flex-1 min-h-[280px] md:min-h-[320px]' : 'h-48'} w-full border-b-[3px] border-black overflow-hidden`}>
