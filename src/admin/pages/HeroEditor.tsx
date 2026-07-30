@@ -35,7 +35,8 @@ export function HeroEditor() {
       parsed.setHours(hours, 0, 0, 0);
   
       // Build ISO string with PKT offset (+05:00)
-      const iso = parsed.toISOString().slice(0, 19) + '+05:00';
+      const pad = (n: number) => String(n).padStart(2, '0');
+      const iso = `${parsed.getFullYear()}-${pad(parsed.getMonth() + 1)}-${pad(parsed.getDate())}T${pad(parsed.getHours())}:${pad(parsed.getMinutes())}:${pad(parsed.getSeconds())}+05:00`;
       
       setHeroData(prev => {
         const updated = { ...prev, countdownTarget: iso };
