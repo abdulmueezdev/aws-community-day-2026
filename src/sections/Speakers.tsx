@@ -16,7 +16,7 @@ export function Speakers() {
         
         {/* Left Column: Panel Discussion */}
         <ScrollReveal delay={0}>
-          <div className="w-full lg:w-2/5 flex flex-col">
+          <div className="w-full lg:w-[45%] flex flex-col">
             <NeoBadge variant="primary" className="mb-6 self-start">
               PANEL DISCUSSION
             </NeoBadge>
@@ -37,13 +37,13 @@ export function Speakers() {
         </ScrollReveal>
 
         {/* Right Column: Workshops */}
-        <div className="w-full lg:w-3/5 flex flex-col">
+        <div className="w-full flex-1 flex flex-col">
           <NeoBadge variant="secondary" className="mb-6 self-start bg-white">
             SPEAKERS & WORKSHOPS
           </NeoBadge>
 
-          {/* Grid of 7 cards - 4 columns on large screens, or wrap */}
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {/* Grid of 7 cards - wider format */}
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
             {workshopSpeakers.map((speaker) => (
               <StaggerItem key={speaker.id}>
                 <SpeakerCard speaker={speaker} />
@@ -60,7 +60,7 @@ export function Speakers() {
 function SpeakerCard({ speaker, isLarge = false }: { speaker: any, isLarge?: boolean }) {
   return (
     <div className={`bg-white border-[3px] border-black shadow-neo rounded-none overflow-hidden hover:-translate-y-1 hover:shadow-neo-hover transition-transform flex flex-col h-full`}>
-      <div className={`relative ${isLarge ? 'flex-1 min-h-[280px] md:min-h-[320px]' : 'h-48'} w-full border-b-[3px] border-black bg-gray-200 overflow-hidden`}>
+      <div className={`relative ${isLarge ? 'flex-1 min-h-[280px] md:min-h-[320px]' : 'h-48'} w-full border-b-[3px] border-black overflow-hidden`}>
         <img 
           src={speaker.photoUrl} 
           alt={speaker.name} 
