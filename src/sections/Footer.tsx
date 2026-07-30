@@ -25,11 +25,9 @@ export function Footer() {
           {/* Logo and Tagline */}
           <div className="flex flex-col items-center mb-12">
             <img 
-              src="https://placehold.co/150x50/000000/FFFFFF?text=LOGO" 
-              alt="Logo" 
-              width="150"
-              height="50"
-              className="mb-6 rounded-none border-[3px] border-white h-[50px] w-auto"
+              src="/images/aws-logo.png" 
+              alt="AWS Student Community Day Lahore" 
+              className="mb-6 rounded-none border-[3px] border-white bg-white object-contain px-3 py-1 h-[50px] w-auto"
             />
             <p className="font-body text-gray-400 text-center max-w-md">
               {settings.seoDescription}

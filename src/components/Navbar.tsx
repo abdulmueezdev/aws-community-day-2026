@@ -24,7 +24,11 @@ export function Navbar() {
         
         {/* Left: Logo */}
         <div className="flex-shrink-0">
-          <img src="https://placehold.co/150x50/FFFDF5/000000?text=LOGO" width="150" height="50" alt="Logo" className="rounded-none border-[3px] border-black shadow-neo-sm h-12 w-auto" />
+          <img 
+            src="/images/aws-logo.png" 
+            alt="AWS Student Community Day Lahore" 
+            className="rounded-none border-[3px] border-black shadow-neo-sm bg-white object-contain px-3 py-1 h-12 w-auto" 
+          />
         </div>
 
         {/* Right: Desktop Nav */}
