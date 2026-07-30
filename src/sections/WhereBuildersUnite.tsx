@@ -1,11 +1,12 @@
-import { defaultSiteData } from '../data/siteData';
+import { useSiteData } from '../context/SiteDataContext';
 import { NeoCard } from '../components/NeoCard';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { StaggerContainer } from '../components/StaggerContainer';
 import { StaggerItem } from '../components/StaggerItem';
 
 export function WhereBuildersUnite() {
-  const { event } = defaultSiteData;
+  const { siteData } = useSiteData();
+  const { event } = siteData;
 
   return (
     <section id="about" className="pb-24 px-6 bg-white border-b-[3px] border-black">

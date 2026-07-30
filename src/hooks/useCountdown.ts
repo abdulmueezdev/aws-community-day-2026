@@ -32,7 +32,7 @@ export function useCountdown(targetDate: string): TimeLeft {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [targetDate]);
 
   return timeLeft;
 }
