@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-import { defaultSiteData } from '../data/siteData';
+import { useSiteData } from '../context/SiteDataContext';
 import { NeoBadge } from '../components/NeoBadge';
 import { NeoCard } from '../components/NeoCard';
 import { cn } from '../lib/utils';
 
 export function FAQ() {
-  const { faqs } = defaultSiteData;
+  const { siteData } = useSiteData();
+  const faqs = siteData.faqs.filter(f => f.isPublished);
   const visibleFaqs = faqs.filter(f => f.isPublished).sort((a, b) => a.displayOrder - b.displayOrder);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
