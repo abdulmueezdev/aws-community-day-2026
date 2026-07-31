@@ -4,21 +4,49 @@ import { NeoButton } from '../../components/NeoButton';
 import { NeoCard } from '../../components/NeoCard';
 import { ConfirmDialog } from '../components/ConfirmDialog';
 import { defaultSiteData } from '../../data/siteData';
+import type { Partner } from '../../data/siteData';
+import { useSiteData } from '../../context/SiteDataContext';
+import { PartnerModal } from './PartnerModal';
 
 export function PartnersManager() {
-  const [partners, setPartners] = useState(defaultSiteData.partners);
+  const { siteData, updateSiteData } = useSiteData();
+  const partners = siteData.partners;
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingPartner, setEditingPartner] = useState<Partner | null>(null);
+
+  const updatePartners = (newPartners: Partner[]) => {
+    updateSiteData({ ...siteData, partners: newPartners });
+  };
 
   const handleDelete = () => {
     if (deletingId) {
-      setPartners(partners.filter(p => p.id !== deletingId));
+      updatePartners(partners.filter(p => p.id !== deletingId));
     }
     setIsConfirmOpen(false);
     setDeletingId(null);
   };
 
+  const handleAdd = () => {
+    setEditingPartner(null);
+    setIsModalOpen(true);
+  };
 
+  const handleEdit = (partner: Partner) => {
+    setEditingPartner(partner);
+    setIsModalOpen(true);
+  };
+
+  const handleSave = (partner: Partner) => {
+    if (editingPartner) {
+      updatePartners(partners.map(p => p.id === partner.id ? partner : p));
+    } else {
+      updatePartners([...partners, partner]);
+    }
+    setIsModalOpen(false);
+    setEditingPartner(null);
+  };
 
   return (
     <div className="flex flex-col gap-6">
@@ -26,9 +54,14 @@ export function PartnersManager() {
         <h3 className="font-heading text-2xl font-black uppercase">
           Partners ({partners.length})
         </h3>
-        <NeoButton variant="primary">
-          + ADD PARTNER
-        </NeoButton>
+        <div className="flex gap-4">
+          <NeoButton variant="ghost" onClick={() => updatePartners(defaultSiteData.partners)}>
+            ↺ RESET
+          </NeoButton>
+          <NeoButton variant="primary" onClick={handleAdd}>
+            + ADD PARTNER
+          </NeoButton>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -57,13 +90,16 @@ export function PartnersManager() {
                 <button 
                   className="p-2 hover:bg-gray-200 border-[3px] border-transparent hover:border-black transition-colors"
                   onClick={() => {
-                    setPartners(partners.map(p => p.id === partner.id ? { ...p, isVisible: !p.isVisible } : p));
+                    updatePartners(partners.map(p => p.id === partner.id ? { ...p, isVisible: !p.isVisible } : p));
                   }}
                   title="Toggle Visibility"
                 >
                   {partner.isVisible ? <Eye size={20} /> : <EyeOff size={20} className="text-gray-400" />}
                 </button>
-                <button className="p-2 hover:bg-teal-100 border-[3px] border-transparent hover:border-black transition-colors text-tertiary">
+                <button 
+                  className="p-2 hover:bg-teal-100 border-[3px] border-transparent hover:border-black transition-colors text-tertiary"
+                  onClick={() => handleEdit(partner)}
+                >
                   <Pencil size={20} />
                 </button>
                 <button 
@@ -77,6 +113,13 @@ export function PartnersManager() {
           </NeoCard>
         ))}
       </div>
+
+      <PartnerModal
+        isOpen={isModalOpen}
+        onClose={() => { setIsModalOpen(false); setEditingPartner(null); }}
+        onSave={handleSave}
+        partner={editingPartner}
+      />
 
       <ConfirmDialog
         isOpen={isConfirmOpen}

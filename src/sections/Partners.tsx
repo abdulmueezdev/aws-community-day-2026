@@ -1,7 +1,8 @@
-import { defaultSiteData } from '../data/siteData';
+import { useSiteData } from '../context/SiteDataContext';
 
 export function Partners() {
-  const { partners } = defaultSiteData;
+  const { siteData } = useSiteData();
+  const partners = siteData.partners.filter(p => p.isVisible);
   
   // Triple duplicate for seamless infinite loop
   const duplicated = [...partners, ...partners, ...partners];

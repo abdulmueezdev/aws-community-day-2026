@@ -1,5 +1,8 @@
-Discuss: Need Panelist and Keynote CRUD and matching card sizes.
-Plan: Update STATE.md, Read skills, Audit data structure, Implement CRUD, Fix UI layout, Test with chrome-devtools-mcp
-Execute: Execute atomic tasks in order
-Verify: Build after each step, run chrome-devtools-mcp tests
-Ship: Commit and push changes
+# PHASE 8d: PARTNERS MANAGER — FULL CRUD FIX
+
+## Audit + Fix Plan
+- TASK 1: AUDIT PARTNERS DATA + ADMIN FILES (NO CODE CHANGES)
+- TASK 2: FIX ADD PARTNER
+- TASK 3: FIX EDIT PARTNER
+- TASK 4: FIX TOGGLE + DELETE
+- TASK 5: CHROMIUM VERIFICATION
