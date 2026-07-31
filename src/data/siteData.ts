@@ -63,6 +63,8 @@ export interface SiteData {
     venuePostalCode: string;
     venueCountry: string;
     venueMapEmbedUrl: string;
+    venueLatitude: number;
+    venueLongitude: number;
   };
   speakers: Speaker[];
   partners: Partner[];
@@ -102,7 +104,9 @@ export const defaultSiteData: SiteData = {
     venueProvince: "Punjab",
     venuePostalCode: "54660",
     venueCountry: "Pakistan",
-    venueMapEmbedUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Map+Embed"
+    venueMapEmbedUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Map+Embed",
+    venueLatitude: 31.5204,
+    venueLongitude: 74.3587,
   },
   speakers: [
     {

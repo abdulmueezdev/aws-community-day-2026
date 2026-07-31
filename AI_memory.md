@@ -27,7 +27,7 @@
 - 🔴 Partners.tsx — still uses defaultSiteData
 - 🔴 Organizers.tsx — still uses defaultSiteData
 - 🔴 FAQ.tsx — still uses defaultSiteData
-- 🔴 Venue.tsx — still uses defaultSiteData
+- ✅ Venue.tsx — reads venue data from context, map updates with lat/lng props
 
 ## Admin Editors Wired to Context
 - ✅ HeroEditor.tsx — auto-syncs display date/time to countdown target, save button with toast
@@ -36,7 +36,7 @@
 - 🔴 PartnersManager.tsx — still uses local state only
 - 🔴 OrganizersManager.tsx — still uses local state only
 - 🔴 FAQManager.tsx — still uses local state only
-- 🔴 VenueEditor.tsx — still uses local state only
+- ✅ VenueEditor.tsx — full venue editing via context, lat/lng fields, save/reset buttons
 - 🔴 Settings.tsx — still uses local state only
 
 ## HeroEditor Auto-Sync Logic

@@ -1,10 +1,11 @@
-import { defaultSiteData } from '../data/siteData';
+import { useSiteData } from '../context/SiteDataContext';
 import { NeoBadge } from '../components/NeoBadge';
 import { NeoButton } from '../components/NeoButton';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { VenueMap } from '../components/VenueMap';
 export function Venue() {
-  const { event } = defaultSiteData;
+  const { siteData } = useSiteData();
+  const { event } = siteData;
 
   return (
     <section id="venue" className="pb-24 px-6 bg-white border-b-[3px] border-black">
@@ -39,7 +40,12 @@ export function Venue() {
         {/* Right Column: Map */}
         <div className="w-full md:w-2/3">
           <div className="w-full">
-            <VenueMap />
+            <VenueMap 
+              lat={event.venueLatitude}
+              lng={event.venueLongitude}
+              venueName={event.venueName}
+              address={`${event.venueAddress}, ${event.venueCity}, ${event.venueProvince}`}
+            />
           </div>
         </div>
 

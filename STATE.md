@@ -1,8 +1,6 @@
-# PHASE 8d: PARTNERS MANAGER — FULL CRUD FIX
+# Phase 8.5g STATE
 
-## Audit + Fix Plan
-- TASK 1: AUDIT PARTNERS DATA + ADMIN FILES (NO CODE CHANGES)
-- TASK 2: FIX ADD PARTNER
-- TASK 3: FIX EDIT PARTNER
-- TASK 4: FIX TOGGLE + DELETE
-- TASK 5: CHROMIUM VERIFICATION
+- VenueEditor live binding required
+- Public Venue.tsx wired to context required
+- VenueMap wired to coords required
+- siteData venue latitude and longitude needed
