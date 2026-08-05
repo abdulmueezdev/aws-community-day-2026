@@ -28,7 +28,16 @@ function SEOUpdater() {
   const { siteData } = useSiteData();
   useEffect(() => {
     document.title = siteData.settings.seoTitle;
-  }, [siteData.settings.seoTitle]);
+    
+    // Update or create meta description tag
+    let metaDesc = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.name = 'description';
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.content = siteData.settings.seoDescription;
+  }, [siteData.settings.seoTitle, siteData.settings.seoDescription]);
   return null;
 }
 
