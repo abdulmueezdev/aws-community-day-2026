@@ -37,7 +37,7 @@ export function CardFanCarousel({ organizers }: CardFanCarouselProps) {
   return (
     <div className="w-full max-w-4xl mx-auto flex flex-col items-center relative">
       {/* Navigation Arrows */}
-      <div className="absolute left-0 md:left-4 top-1/2 -translate-y-1/2 z-50">
+      <div className="absolute left-0 md:left-4 top-1/2 -translate-y-1/2 z-40">
         <button 
           onClick={prev}
           className="p-2 md:p-3 bg-secondary border-[3px] border-black shadow-neo hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neo-sm active:translate-x-[2px] active:translate-y-[2px]"
@@ -47,7 +47,7 @@ export function CardFanCarousel({ organizers }: CardFanCarouselProps) {
         </button>
       </div>
 
-      <div className="absolute right-0 md:right-4 top-1/2 -translate-y-1/2 z-50">
+      <div className="absolute right-0 md:right-4 top-1/2 -translate-y-1/2 z-40">
         <button 
           onClick={next}
           className="p-2 md:p-3 bg-secondary border-[3px] border-black shadow-neo hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neo-sm active:translate-x-[2px] active:translate-y-[2px]"
@@ -134,7 +134,7 @@ export function CardFanCarousel({ organizers }: CardFanCarouselProps) {
       </div>
       
       {/* Dot Indicators */}
-      <div className="flex gap-3 mt-4 z-50 relative">
+      <div className="flex gap-3 mt-4 z-40 relative">
         {organizers.map((_, index) => (
           <button
             key={index}
