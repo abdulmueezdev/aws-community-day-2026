@@ -1,6 +1,6 @@
 import { NeoCard } from '../../components/NeoCard';
 import { NeoButton } from '../../components/NeoButton';
-import { Users, Ticket, Handshake, MessageCircle } from 'lucide-react';
+import { Users, UserCog, Handshake, MessageCircle } from 'lucide-react';
 import { useSiteData } from '../../context/SiteDataContext';
 
 export function Dashboard() {
@@ -8,7 +8,7 @@ export function Dashboard() {
 
   const stats = [
     { label: 'Speakers', value: siteData.speakers.length, icon: Users, color: 'bg-tertiary' },
-    { label: 'Registrations', value: siteData.settings.currentRegistrations, icon: Ticket, color: 'bg-primary' },
+    { label: 'Organizers', value: siteData.organizers.length, icon: UserCog, color: 'bg-primary' },
     { label: 'Partners', value: siteData.partners.length, icon: Handshake, color: 'bg-secondary' },
     { label: 'FAQ Items', value: siteData.faqs.length, icon: MessageCircle, color: 'bg-warning' },
   ];
