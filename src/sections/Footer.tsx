@@ -1,8 +1,9 @@
-import { defaultSiteData } from '../data/siteData';
+import { useSiteData } from '../context/SiteDataContext';
 import { ScrollReveal } from '../components/ScrollReveal';
 
 export function Footer() {
-  const { settings } = defaultSiteData;
+  const { siteData } = useSiteData();
+  const { settings } = siteData;
 
   const handleAdminClick = () => {
     window.location.href = '/admin/login';
@@ -38,7 +39,7 @@ export function Footer() {
           <div className="flex items-center justify-center gap-4 mt-8 mb-4">
             {/* LinkedIn */}
             <a
-              href="https://linkedin.com"
+              href={settings.socialLinkedin || "#"}
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 bg-[#0077b5] border-[3px] border-black shadow-neo-sm flex items-center justify-center hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
@@ -51,7 +52,7 @@ export function Footer() {
           
             {/* GitHub */}
             <a
-              href="https://github.com"
+              href={settings.socialGithub || "#"}
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 bg-black border-[3px] border-black shadow-neo-sm flex items-center justify-center hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
@@ -64,7 +65,7 @@ export function Footer() {
           
             {/* Instagram */}
             <a
-              href="https://instagram.com"
+              href={settings.socialInstagram || "#"}
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 bg-[#E4405F] border-[3px] border-black shadow-neo-sm flex items-center justify-center hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
@@ -75,9 +76,9 @@ export function Footer() {
               </svg>
             </a>
           
-            {/* Meetup */}
+            {/* Twitter */}
             <a
-              href="https://meetup.com"
+              href={settings.socialTwitter || "#"}
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 bg-[#ED1C40] border-[3px] border-black shadow-neo-sm flex items-center justify-center hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
