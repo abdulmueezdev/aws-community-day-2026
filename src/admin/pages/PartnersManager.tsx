@@ -10,7 +10,7 @@ import { PartnerModal } from './PartnerModal';
 
 export function PartnersManager() {
   const { siteData, updateSiteData } = useSiteData();
-  const partners = siteData.partners;
+  const partners = [...siteData.partners].sort((a, b) => a.displayOrder - b.displayOrder);
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);

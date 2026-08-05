@@ -2,7 +2,9 @@ import { useSiteData } from '../context/SiteDataContext';
 
 export function Partners() {
   const { siteData } = useSiteData();
-  const partners = siteData.partners.filter(p => p.isVisible);
+  const partners = siteData.partners
+    .filter(p => p.isVisible)
+    .sort((a, b) => a.displayOrder - b.displayOrder);
   
   // Triple duplicate for seamless infinite loop
   const duplicated = [...partners, ...partners, ...partners];
@@ -25,12 +27,11 @@ export function Partners() {
           <div className="flex gap-4 md:gap-6 w-max animate-marquee">
             {duplicated.map((partner, index) => {
               const isFirstOriginal = index === 0;
+              const hasValidUrl = partner.websiteUrl && partner.websiteUrl !== '#';
+              const cardClasses = "flex-shrink-0 w-[180px] md:w-[200px] block bg-white border-[3px] border-black shadow-neo hover:shadow-neo-hover hover:-translate-y-1 transition-all cursor-pointer text-inherit";
               
-              return (
-                <div
-                  key={`${partner.id}-${index}`}
-                  className="flex-shrink-0 w-[180px] md:w-[200px] bg-white border-[3px] border-black shadow-neo hover:shadow-neo-hover hover:-translate-y-1 transition-all cursor-pointer"
-                >
+              const innerContent = (
+                <>
                   {/* Logo/Image */}
                   <div className="w-full h-[100px] md:h-[120px] border-b-[3px] border-black bg-gray-100 flex items-center justify-center overflow-hidden">
                     {partner.logoUrl ? (
@@ -61,6 +62,29 @@ export function Partners() {
                       )}
                     </div>
                   )}
+                </>
+              );
+
+              if (hasValidUrl) {
+                return (
+                  <a
+                    key={`${partner.id}-${index}`}
+                    href={partner.websiteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cardClasses}
+                  >
+                    {innerContent}
+                  </a>
+                );
+              }
+
+              return (
+                <div
+                  key={`${partner.id}-${index}`}
+                  className={cardClasses}
+                >
+                  {innerContent}
                 </div>
               );
             })}
