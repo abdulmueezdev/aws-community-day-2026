@@ -17,9 +17,10 @@ export function SpeakersManager() {
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
-  const filteredSpeakers = activeType === 'all'
+  const filteredSpeakers = [...(activeType === 'all'
     ? speakers
-    : speakers.filter(s => s.sessionType === activeType);
+    : speakers.filter(s => s.sessionType === activeType))
+  ].sort((a, b) => a.displayOrder - b.displayOrder);
   const [toast, setToast] = useState<{ type: string; message: string } | null>(null);
   const showToast = (type: string, message: string) => {
     setToast({ type, message });
