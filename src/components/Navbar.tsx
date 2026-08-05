@@ -9,6 +9,7 @@ export function Navbar() {
     { name: 'Home', href: '#home' },
     { name: 'Partners', href: '#partners' },
     { name: 'Speakers', href: '#speakers' },
+    { name: 'Organizers', href: '#team' },
     { name: 'Venue', href: '#venue' },
     { name: 'FAQ', href: '#faq' },
   ];
