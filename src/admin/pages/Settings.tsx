@@ -1,11 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NeoCard } from '../../components/NeoCard';
 import { NeoInput } from '../../components/NeoInput';
-import { defaultSiteData } from '../../data/siteData';
+import { useSiteData } from '../../context/SiteDataContext';
 
 export function Settings() {
-  const [settingsData, setSettingsData] = useState(defaultSiteData.settings);
+  const { siteData, updateSiteData, isOverride, resetToDefaults } = useSiteData();
+  const [settingsData, setSettingsData] = useState(siteData.settings);
   
+  useEffect(() => {
+    setSettingsData(siteData.settings);
+  }, [siteData.settings]);
+
   const handleUpdate = (field: keyof typeof settingsData, value: string | number | boolean) => {
     setSettingsData(prev => ({
       ...prev,
