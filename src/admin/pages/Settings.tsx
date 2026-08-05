@@ -62,7 +62,7 @@ export function Settings() {
           <NeoCard className="bg-white p-6">
             <h3 className="font-heading text-2xl font-black mb-6 uppercase">Registration</h3>
             <div className="flex flex-col gap-4">
-              <div className="flex items-center justify-between p-4 border-[3px] border-black bg-gray-50">
+              <div className="flex items-center justify-between p-4 border-[3px] border-black bg-gray-50 shadow-neo-sm rounded-none">
                 <span className="font-bold">Current Registrations</span>
                 <span className="font-heading text-2xl font-black">{settingsData.currentRegistrations}</span>
               </div>
@@ -76,7 +76,7 @@ export function Settings() {
                 <input 
                   type="checkbox" 
                   id="registrationOpen" 
-                  className="w-6 h-6 border-[3px] border-black accent-primary"
+                  className="w-6 h-6 border-[3px] border-black accent-primary rounded-none cursor-pointer"
                   checked={settingsData.registrationOpen}
                   onChange={(e) => handleUpdate('registrationOpen', e.target.checked)}
                 />
