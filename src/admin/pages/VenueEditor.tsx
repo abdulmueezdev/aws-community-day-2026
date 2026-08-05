@@ -139,10 +139,18 @@ export function VenueEditor() {
           </NeoCard>
 
           <NeoCard className="bg-white p-6">
-            <h3 className="font-heading text-2xl font-black mb-4 uppercase">Map</h3>
-            <p className="font-body text-textSecondary text-sm">
-              The map on the public site is automatically generated from the venue name and address fields above. 
-              No manual configuration needed — just update the location fields and the map will follow.
+            <h3 className="font-heading text-2xl font-black mb-4 uppercase">Map Embed URL</h3>
+            <p className="font-body text-textSecondary text-sm mb-4">
+              Paste a Google Maps embed URL for the most reliable map display. Go to Google Maps → find your location → Share → Embed a map → Copy the src URL. If left empty or set to default, the map will use coordinates or address as fallback.
+            </p>
+            <NeoInput
+              label="Embed URL"
+              value={venueData.venueMapEmbedUrl}
+              onChange={(e) => handleUpdate('venueMapEmbedUrl', e.target.value)}
+              placeholder="https://www.google.com/maps/embed?pb=..."
+            />
+            <p className="font-body text-textSecondary text-xs mt-3">
+              Fallback priority: Embed URL → Coordinates → Address text
             </p>
           </NeoCard>
         </div>
