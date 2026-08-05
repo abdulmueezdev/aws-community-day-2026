@@ -59,33 +59,7 @@ export function Settings() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         
         <div className="flex flex-col gap-8">
-          <NeoCard className="bg-white p-6">
-            <h3 className="font-heading text-2xl font-black mb-6 uppercase">Registration</h3>
-            <div className="flex flex-col gap-4">
-              <div className="flex items-center justify-between p-4 border-[3px] border-black bg-gray-50 shadow-neo-sm rounded-none">
-                <span className="font-bold">Current Registrations</span>
-                <span className="font-heading text-2xl font-black">{settingsData.currentRegistrations}</span>
-              </div>
-              <NeoInput 
-                label="Max Capacity" 
-                type="number"
-                value={settingsData.maxCapacity.toString()} 
-                onChange={(e) => handleUpdate('maxCapacity', parseInt(e.target.value))} 
-              />
-              <div className="flex items-center gap-4 mt-2">
-                <input 
-                  type="checkbox" 
-                  id="registrationOpen" 
-                  className="w-6 h-6 border-[3px] border-black accent-primary rounded-none cursor-pointer"
-                  checked={settingsData.registrationOpen}
-                  onChange={(e) => handleUpdate('registrationOpen', e.target.checked)}
-                />
-                <label htmlFor="registrationOpen" className="font-bold cursor-pointer text-lg">
-                  Registration is Open
-                </label>
-              </div>
-            </div>
-          </NeoCard>
+
 
           <NeoCard className="bg-white p-6">
             <h3 className="font-heading text-2xl font-black mb-6 uppercase">Social Links</h3>
@@ -133,25 +107,7 @@ export function Settings() {
             </div>
           </NeoCard>
 
-          <NeoCard className="bg-white p-6">
-            <h3 className="font-heading text-2xl font-black mb-6 uppercase">Footer Configuration</h3>
-            <div className="flex flex-col gap-4">
-              <div className="flex flex-col gap-2">
-                <label className="font-heading font-black text-lg uppercase">Copyright Text</label>
-                <textarea className="rounded-none w-full p-3 border-[3px] border-black shadow-neo-sm font-bold outline-none focus:shadow-neo-hover transition-all min-h-[80px]"
-                  value={settingsData.footerCopyright}
-                  onChange={(e) => handleUpdate('footerCopyright', e.target.value)}
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label className="font-heading font-black text-lg uppercase">Credits Text</label>
-                <textarea className="rounded-none w-full p-3 border-[3px] border-black shadow-neo-sm font-bold outline-none focus:shadow-neo-hover transition-all min-h-[80px]"
-                  value={settingsData.footerCredits}
-                  onChange={(e) => handleUpdate('footerCredits', e.target.value)}
-                />
-              </div>
-            </div>
-          </NeoCard>
+
         </div>
 
       </div>
