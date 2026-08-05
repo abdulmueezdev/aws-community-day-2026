@@ -1,4 +1,4 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ReactLenis } from 'lenis/react';
 import { Navbar } from './components/Navbar';
@@ -22,11 +22,20 @@ const OrganizersManager = lazy(() => import('./admin/pages/OrganizersManager').t
 const VenueEditor = lazy(() => import('./admin/pages/VenueEditor').then(m => ({ default: m.VenueEditor })));
 const Settings = lazy(() => import('./admin/pages/Settings').then(m => ({ default: m.Settings })));
 
-import { SiteDataProvider } from './context/SiteDataContext';
+import { SiteDataProvider, useSiteData } from './context/SiteDataContext';
+
+function SEOUpdater() {
+  const { siteData } = useSiteData();
+  useEffect(() => {
+    document.title = siteData.settings.seoTitle;
+  }, [siteData.settings.seoTitle]);
+  return null;
+}
 
 function App() {
   return (
     <SiteDataProvider>
+      <SEOUpdater />
       <BrowserRouter>
         <Routes>
         {/* Public Site */}
