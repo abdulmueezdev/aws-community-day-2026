@@ -27,13 +27,10 @@
 - **Status:** Complete
 - [x] Fix `Organizers.tsx`
 - [x] Create `OrganizerModal.tsx`
-- [x] Fix `OrganizersManager.tsx`
-
-## Phase 4: Verify
-- **Status:** Complete
-- [x] Run `npx tsc --noEmit`
-- [x] Run `npm run build`
-- [x] Perform browser verification (Screenshots)
+- [x] Task 1: Fix `VenueEditor.tsx` stale state bug and add coordinate inputs with Neo-Brutalism styling.
+- [x] Task 2: Update `VenueMap.tsx` to support coordinates.
+- [x] Task 3: Update `Venue.tsx` to pass coordinates to `VenueMap`.
+- [x] Task 4: Browser verification via chromium-devtools-mcp (Screenshots).
 
 ## Phase 5: Ship
 - **Status:** Complete
