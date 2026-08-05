@@ -26,18 +26,39 @@ import { SiteDataProvider, useSiteData } from './context/SiteDataContext';
 
 function SEOUpdater() {
   const { siteData } = useSiteData();
+  
   useEffect(() => {
-    document.title = siteData.settings.seoTitle;
+    // 1. Update document title
+    document.title = siteData.settings.seoTitle || 'AWS Community Day Lahore 2026';
     
-    // Update or create meta description tag
-    let metaDesc = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
+    // 2. Update or create meta description
+    let metaDesc = document.querySelector('meta[name="description"]');
     if (!metaDesc) {
       metaDesc = document.createElement('meta');
-      metaDesc.name = 'description';
+      metaDesc.setAttribute('name', 'description');
       document.head.appendChild(metaDesc);
     }
-    metaDesc.content = siteData.settings.seoDescription;
+    metaDesc.setAttribute('content', siteData.settings.seoDescription || '');
+    
+    // 3. Update or create og:title
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (!ogTitle) {
+      ogTitle = document.createElement('meta');
+      ogTitle.setAttribute('property', 'og:title');
+      document.head.appendChild(ogTitle);
+    }
+    ogTitle.setAttribute('content', siteData.settings.seoTitle || '');
+    
+    // 4. Update or create og:description
+    let ogDesc = document.querySelector('meta[property="og:description"]');
+    if (!ogDesc) {
+      ogDesc = document.createElement('meta');
+      ogDesc.setAttribute('property', 'og:description');
+      document.head.appendChild(ogDesc);
+    }
+    ogDesc.setAttribute('content', siteData.settings.seoDescription || '');
   }, [siteData.settings.seoTitle, siteData.settings.seoDescription]);
+  
   return null;
 }
 
