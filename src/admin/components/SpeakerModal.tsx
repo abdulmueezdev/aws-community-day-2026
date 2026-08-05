@@ -142,13 +142,7 @@ export function SpeakerModal({ isOpen, onClose, speaker, onSave, defaultSessionT
                   onChange={e => setFormData({...formData, sessionTitle: e.target.value})} 
                 />
 
-                <div className="flex flex-col gap-2">
-                  <label className="font-heading font-black text-lg uppercase">Bio</label>
-                  <textarea className="rounded-none w-full p-3 border-[3px] border-black shadow-neo-sm font-bold outline-none focus:shadow-neo-hover transition-all min-h-[100px]"
-                    value={formData.bio}
-                    onChange={e => setFormData({...formData, bio: e.target.value})}
-                  />
-                </div>
+
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <NeoInput 
