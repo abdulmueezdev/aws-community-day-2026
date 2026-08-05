@@ -88,27 +88,7 @@ export function Settings() {
           </NeoCard>
         </div>
 
-        <div className="flex flex-col gap-8">
-          <NeoCard className="bg-white p-6">
-            <h3 className="font-heading text-2xl font-black mb-6 uppercase">SEO & Meta</h3>
-            <div className="flex flex-col gap-4">
-              <NeoInput 
-                label="Site Title" 
-                value={settingsData.seoTitle} 
-                onChange={(e) => handleUpdate('seoTitle', e.target.value)} 
-              />
-              <div className="flex flex-col gap-2">
-                <label className="font-heading font-black text-lg uppercase">Meta Description</label>
-                <textarea className="rounded-none w-full p-3 border-[3px] border-black shadow-neo-sm font-bold outline-none focus:shadow-neo-hover transition-all min-h-[100px]"
-                  value={settingsData.seoDescription}
-                  onChange={(e) => handleUpdate('seoDescription', e.target.value)}
-                />
-              </div>
-            </div>
-          </NeoCard>
 
-
-        </div>
 
       </div>
 
