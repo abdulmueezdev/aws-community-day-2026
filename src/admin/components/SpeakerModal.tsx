@@ -144,26 +144,12 @@ export function SpeakerModal({ isOpen, onClose, speaker, onSave, defaultSessionT
 
 
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <NeoInput 
-                    label="Twitter URL" 
-                    value={formData.socialTwitter || ''} 
-                    onChange={e => setFormData({...formData, socialTwitter: e.target.value})} 
-                    placeholder="https://twitter.com/..."
-                  />
-                  <NeoInput 
-                    label="LinkedIn URL" 
-                    value={formData.socialLinkedin || ''} 
-                    onChange={e => setFormData({...formData, socialLinkedin: e.target.value})} 
-                    placeholder="https://linkedin.com/in/..."
-                  />
-                  <NeoInput 
-                    label="GitHub URL" 
-                    value={formData.socialGithub || ''} 
-                    onChange={e => setFormData({...formData, socialGithub: e.target.value})} 
-                    placeholder="https://github.com/..."
-                  />
-                </div>
+                <NeoInput 
+                  label="LinkedIn URL" 
+                  value={formData.socialLinkedin || ''} 
+                  onChange={e => setFormData({...formData, socialLinkedin: e.target.value})} 
+                  placeholder="https://linkedin.com/in/..."
+                />
 
                 <NeoInput 
                   label="Display Order" 
