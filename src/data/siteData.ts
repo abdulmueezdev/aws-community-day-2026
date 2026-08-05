@@ -336,7 +336,7 @@ export const defaultSiteData: SiteData = {
   settings: {
     registrationOpen: false,
     maxCapacity: 500,
-    currentRegistrations: 0,
+    currentRegistrations: 15,
     socialInstagram: "#",
     socialTwitter: "#",
     socialLinkedin: "#",
