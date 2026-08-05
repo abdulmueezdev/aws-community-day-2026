@@ -110,38 +110,14 @@ export function VenueEditor() {
                   onChange={(e) => handleUpdate('venueCountry', e.target.value)}
                 />
               </div>
-              <div className="grid grid-cols-2 gap-4">
-                <NeoInput
-                  label="Latitude"
-                  type="number"
-                  step="any"
-                  value={venueData.venueLatitude || 0}
-                  onChange={(e) => handleUpdate('venueLatitude', parseFloat(e.target.value) || 0)}
-                />
-                <NeoInput
-                  label="Longitude"
-                  type="number"
-                  step="any"
-                  value={venueData.venueLongitude || 0}
-                  onChange={(e) => handleUpdate('venueLongitude', parseFloat(e.target.value) || 0)}
-                />
-              </div>
-              <button
-                onClick={() => {
-                  handleUpdate('venueLatitude', 0);
-                  handleUpdate('venueLongitude', 0);
-                }}
-                className="w-full py-3 bg-white text-black border-[3px] border-black shadow-neo-sm font-heading font-bold text-sm uppercase rounded-none hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
-              >
-                Clear Coordinates
-              </button>
+
             </div>
           </NeoCard>
 
           <NeoCard className="bg-white p-6">
             <h3 className="font-heading text-2xl font-black mb-4 uppercase">Map Embed URL</h3>
             <p className="font-body text-textSecondary text-sm mb-4">
-              Paste a Google Maps embed URL for the most reliable map display. Go to Google Maps → find your location → Share → Embed a map → Copy the src URL. If left empty or set to default, the map will use coordinates or address as fallback.
+              Paste a Google Maps embed URL for the most reliable map display. Go to Google Maps → find your location → Share → Embed a map → Copy the src URL. If left empty or set to default, the map will use the venue address as fallback.
             </p>
             <NeoInput
               label="Embed URL"
@@ -149,8 +125,19 @@ export function VenueEditor() {
               onChange={(e) => handleUpdate('venueMapEmbedUrl', e.target.value)}
               placeholder="https://www.google.com/maps/embed?pb=..."
             />
+            <a
+              href={`https://www.google.com/maps?q=${encodeURIComponent(venueData.venueName + ' ' + venueData.venueAddress + ' ' + venueData.venueCity)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-3 px-4 py-2 bg-secondary text-black border-[3px] border-black shadow-neo-sm font-heading font-bold text-xs uppercase rounded-none hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
+            >
+              OPEN IN GOOGLE MAPS &rarr;
+            </a>
+            <p className="font-body text-textSecondary text-xs mt-2">
+              Click above, find your location, then Share → Embed a map → Copy the src URL and paste it here.
+            </p>
             <p className="font-body text-textSecondary text-xs mt-3">
-              Fallback priority: Embed URL → Coordinates → Address text
+              Fallback priority: Embed URL → Address text
             </p>
           </NeoCard>
         </div>

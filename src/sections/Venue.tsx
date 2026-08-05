@@ -43,8 +43,6 @@ export function Venue() {
             <VenueMap
               venueName={event.venueName}
               address={`${event.venueAddress}, ${event.venueCity}, ${event.venueProvince} ${event.venuePostalCode}, ${event.venueCountry}`}
-              latitude={event.venueLatitude}
-              longitude={event.venueLongitude}
               embedUrl={event.venueMapEmbedUrl}
             />
           </div>
