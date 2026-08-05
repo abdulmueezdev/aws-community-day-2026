@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NeoCard } from '../../components/NeoCard';
+import { defaultSiteData } from '../../data/siteData';
 import { NeoInput } from '../../components/NeoInput';
 import { NeoButton } from '../../components/NeoButton';
 import { useSiteData } from '../../context/SiteDataContext';
@@ -23,6 +24,12 @@ export function Settings() {
     showToast('success', 'Settings saved!');
   };
 
+  const handleReset = () => {
+    resetToDefaults();
+    setSettingsData(defaultSiteData.settings);
+    showToast('info', 'Reset to defaults');
+  };
+
   const handleUpdate = (field: keyof typeof settingsData, value: string | number | boolean) => {
     setSettingsData(prev => ({
       ...prev,
@@ -39,6 +46,14 @@ export function Settings() {
         <NeoButton variant="primary" onClick={handleSave}>
           Save Changes
         </NeoButton>
+        {isOverride && (
+          <button
+            onClick={handleReset}
+            className="px-4 py-2 bg-danger text-white border-[3px] border-black shadow-neo-sm font-heading text-xs uppercase rounded-none hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
+          >
+            Reset to Defaults
+          </button>
+        )}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
