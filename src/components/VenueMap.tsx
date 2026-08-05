@@ -1,49 +1,36 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
 import { NeoCard } from './NeoCard';
-import L from 'leaflet';
-import icon from 'leaflet/dist/images/marker-icon.png';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-
-let DefaultIcon = L.icon({
-  iconUrl: icon,
-  shadowUrl: iconShadow,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-});
-
-L.Marker.prototype.options.icon = DefaultIcon;
 
 interface VenueMapProps {
-  lat: number;
-  lng: number;
-  venueName?: string;
-  address?: string;
+  venueName: string;
+  address: string;
+  latitude?: number;
+  longitude?: number;
 }
 
-export function VenueMap({ lat, lng, venueName, address }: VenueMapProps) {
-  if (!lat || !lng) return null;
+export function VenueMap({ venueName, address, latitude, longitude }: VenueMapProps) {
+  if (!address && !venueName && (!latitude || !longitude)) return null;
+
+  const query = encodeURIComponent(`${venueName} ${address}`);
+  
+  // If valid coordinates provided, use them directly
+  const hasCoords = latitude !== undefined && longitude !== undefined && latitude !== 0 && longitude !== 0;
+
+  const embedUrl = hasCoords
+    ? `https://maps.google.com/maps?q=${latitude},${longitude}&z=16&ie=UTF8&iwloc=&output=embed`
+    : `https://maps.google.com/maps?q=${query}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
 
   return (
     <NeoCard className="w-full h-[400px] md:h-[500px] p-0 !overflow-hidden">
-      <MapContainer
-        center={[lat, lng]}
-        zoom={15}
-        scrollWheelZoom={false}
-        className="w-full h-full"
-        key={`${lat}-${lng}`}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Marker position={[lat, lng]}>
-          <Popup>
-            <div className="font-heading font-bold text-sm">{venueName || 'Venue'}</div>
-            {address && <div className="font-body text-xs">{address}</div>}
-          </Popup>
-        </Marker>
-      </MapContainer>
+      <iframe
+        src={embedUrl}
+        width="100%"
+        height="100%"
+        style={{ border: 0 }}
+        allowFullScreen
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        title={`Map of ${venueName}`}
+      />
     </NeoCard>
   );
 }

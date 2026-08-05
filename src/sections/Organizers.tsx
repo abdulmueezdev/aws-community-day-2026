@@ -1,9 +1,10 @@
-import { defaultSiteData } from '../data/siteData';
+import { useSiteData } from '../context/SiteDataContext';
 import { NeoBadge } from '../components/NeoBadge';
 import { CardFanCarousel } from '../components/CardFanCarousel';
 
 export function Organizers() {
-  const { organizers } = defaultSiteData;
+  const { siteData } = useSiteData();
+  const { organizers } = siteData;
 
   const visibleOrganizers = organizers.filter(o => o.isVisible).sort((a, b) => a.displayOrder - b.displayOrder);
 

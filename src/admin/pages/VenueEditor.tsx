@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NeoCard } from '../../components/NeoCard';
 import { NeoInput } from '../../components/NeoInput';
 import { NeoButton } from '../../components/NeoButton';
@@ -9,6 +9,10 @@ export function VenueEditor() {
   const { siteData, updateSiteData, isOverride, resetToDefaults } = useSiteData();
   const [venueData, setVenueData] = useState(siteData.event);
   const [toast, setToast] = useState<{ type: string; message: string } | null>(null);
+
+  useEffect(() => {
+    setVenueData(siteData.event);
+  }, [siteData.event]);
 
   const showToast = (type: string, message: string) => {
     setToast({ type, message });
@@ -106,38 +110,40 @@ export function VenueEditor() {
                   onChange={(e) => handleUpdate('venueCountry', e.target.value)}
                 />
               </div>
-              <NeoInput
-                label="Google Maps Embed URL"
-                value={venueData.venueMapEmbedUrl}
-                onChange={(e) => handleUpdate('venueMapEmbedUrl', e.target.value)}
-                placeholder="https://www.google.com/maps/embed?..."
-              />
+              <div className="grid grid-cols-2 gap-4">
+                <NeoInput
+                  label="Latitude"
+                  type="number"
+                  step="any"
+                  value={venueData.venueLatitude || 0}
+                  onChange={(e) => handleUpdate('venueLatitude', parseFloat(e.target.value) || 0)}
+                />
+                <NeoInput
+                  label="Longitude"
+                  type="number"
+                  step="any"
+                  value={venueData.venueLongitude || 0}
+                  onChange={(e) => handleUpdate('venueLongitude', parseFloat(e.target.value) || 0)}
+                />
+              </div>
+              <button
+                onClick={() => {
+                  handleUpdate('venueLatitude', 0);
+                  handleUpdate('venueLongitude', 0);
+                }}
+                className="w-full py-3 bg-white text-black border-[3px] border-black shadow-neo-sm font-heading font-bold text-sm uppercase rounded-none hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
+              >
+                Clear Coordinates
+              </button>
             </div>
           </NeoCard>
 
           <NeoCard className="bg-white p-6">
-            <h3 className="font-heading text-2xl font-black mb-6 uppercase">Map Coordinates</h3>
-            <div className="flex flex-col gap-4">
-              <div className="grid grid-cols-2 gap-4">
-                <NeoInput
-                  label="Latitude"
-                  value={String(venueData.venueLatitude || '')}
-                  onChange={(e) => handleUpdate('venueLatitude', parseFloat(e.target.value) || 0)}
-                  type="number"
-                  step="0.0001"
-                />
-                <NeoInput
-                  label="Longitude"
-                  value={String(venueData.venueLongitude || '')}
-                  onChange={(e) => handleUpdate('venueLongitude', parseFloat(e.target.value) || 0)}
-                  type="number"
-                  step="0.0001"
-                />
-              </div>
-              <p className="text-xs text-textSecondary font-body">
-                Use Google Maps to find coordinates. Current: Lahore Gulberg III (31.5204, 74.3587). Example: Karachi = 24.8607, 67.0011
-              </p>
-            </div>
+            <h3 className="font-heading text-2xl font-black mb-4 uppercase">Map</h3>
+            <p className="font-body text-textSecondary text-sm">
+              The map on the public site is automatically generated from the venue name and address fields above. 
+              No manual configuration needed — just update the location fields and the map will follow.
+            </p>
           </NeoCard>
         </div>
 

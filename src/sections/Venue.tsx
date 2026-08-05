@@ -40,11 +40,11 @@ export function Venue() {
         {/* Right Column: Map */}
         <div className="w-full md:w-2/3">
           <div className="w-full">
-            <VenueMap 
-              lat={event.venueLatitude}
-              lng={event.venueLongitude}
+            <VenueMap
               venueName={event.venueName}
-              address={`${event.venueAddress}, ${event.venueCity}, ${event.venueProvince}`}
+              address={`${event.venueAddress}, ${event.venueCity}, ${event.venueProvince} ${event.venuePostalCode}, ${event.venueCountry}`}
+              latitude={event.venueLatitude}
+              longitude={event.venueLongitude}
             />
           </div>
         </div>
