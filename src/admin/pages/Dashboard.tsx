@@ -1,13 +1,12 @@
 import { NeoCard } from '../../components/NeoCard';
 import { NeoButton } from '../../components/NeoButton';
-import { Users, Ticket, Handshake, Calendar } from 'lucide-react';
+import { Users, Ticket, Handshake } from 'lucide-react';
 
 export function Dashboard() {
   const stats = [
     { label: 'Total Speakers', value: '0', icon: Users, color: 'bg-tertiary' },
     { label: 'Registrations', value: '0', icon: Ticket, color: 'bg-primary' },
-    { label: 'Partners', value: '0', icon: Handshake, color: 'bg-secondary' },
-    { label: 'Days to Event', value: '0', icon: Calendar, color: 'bg-danger' }
+    { label: 'Partners', value: '0', icon: Handshake, color: 'bg-secondary' }
   ];
 
   return (
