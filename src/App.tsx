@@ -29,7 +29,7 @@ function SEOUpdater() {
   
   useEffect(() => {
     // 1. Update document title
-    document.title = siteData.settings.seoTitle || 'AWS Community Day Lahore 2026';
+    document.title = siteData.settings.seoTitle || 'AWS Community Day Peshawar 2026';
     
     // 2. Update or create meta description
     let metaDesc = document.querySelector('meta[name="description"]');

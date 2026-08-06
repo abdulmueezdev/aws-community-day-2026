@@ -87,8 +87,8 @@ export interface SiteData {
 
 export const defaultSiteData: SiteData = {
   event: {
-    title: "AWS Student Community Day Lahore",
-    location: "Lahore",
+    title: "AWS Student Community Day Peshawar",
+    location: "Peshawar",
     tagline: "An immersive, one-day learning conference designed specifically for students.",
     date: "September 9th, 2026",
     time: "10AM — 4PM",
@@ -248,8 +248,8 @@ export const defaultSiteData: SiteData = {
     {
       id: "org-1",
       name: "Abdul Wahab",
-      role: "PRESIDENT ACM-UMT",
-      organization: "UMT",
+      role: "PRESIDENT",
+      organization: "FAST",
       photoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Abdul+Wahab",
       linkedin: "https://linkedin.com/in/abdulwahab",
       displayOrder: 1,
@@ -259,7 +259,7 @@ export const defaultSiteData: SiteData = {
       id: "org-2",
       name: "Masroor Ahmad",
       role: "CLOUD CLUB CAPTAIN",
-      organization: "UMT",
+      organization: "FAST",
       photoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Masroor+Ahmad",
       linkedin: "https://linkedin.com/in/masroorahmad",
       displayOrder: 2,
@@ -269,7 +269,7 @@ export const defaultSiteData: SiteData = {
       id: "org-3",
       name: "Ahmad Hassan",
       role: "EVENT HEAD",
-      organization: "UMT",
+      organization: "FAST",
       photoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Ahmad+Hassan",
       linkedin: "https://linkedin.com/in/example",
       displayOrder: 3,
@@ -279,7 +279,7 @@ export const defaultSiteData: SiteData = {
       id: "org-4",
       name: "Faizan Jallani",
       role: "CO-EVENT HEAD",
-      organization: "UMT",
+      organization: "FAST",
       photoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Faizan+Jallani",
       linkedin: "https://linkedin.com/in/example2",
       displayOrder: 4,
@@ -289,7 +289,7 @@ export const defaultSiteData: SiteData = {
       id: "org-5",
       name: "Muhammad Hassan Ali",
       role: "LOGISTIC HEAD",
-      organization: "UMT",
+      organization: "FAST",
       photoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Muhammad+Hassan+Ali",
       linkedin: "https://linkedin.com/in/hassanali",
       displayOrder: 5,
@@ -341,9 +341,9 @@ export const defaultSiteData: SiteData = {
     socialTwitter: "#",
     socialLinkedin: "#",
     socialGithub: "#",
-    footerCopyright: "Copyright © 2026 AWS Student Community Day Lahore. All rights reserved.",
-    footerCredits: "DESIGN AND CODE BY AHMAD HASSAN",
-    seoTitle: "AWS Student Community Day Lahore 2026",
-    seoDescription: "An immersive, one-day learning conference designed specifically for students."
+    footerCopyright: "Copyright © 2026 AWS Community Day FAST Peshawar. All rights reserved.",
+    footerCredits: "DESIGN AND CODE BY ABDUL MUEEZ",
+    seoTitle: "AWS Student Community Day Peshawar 2026",
+    seoDescription: "An immersive, one-day AWS learning conference at FAST University Peshawar."
   }
 };

@@ -26,7 +26,7 @@ export function Navbar() {
         <div className="flex-shrink-0">
           <img 
             src="/images/aws-logo.png" 
-            alt="AWS Student Community Day Lahore" 
+            alt="AWS Student Community Day Peshawar" 
             className="rounded-none border-[3px] border-black shadow-neo-sm bg-white object-contain px-3 py-1 h-12 w-auto" 
           />
         </div>

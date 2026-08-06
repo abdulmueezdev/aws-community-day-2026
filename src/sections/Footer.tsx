@@ -27,7 +27,7 @@ export function Footer() {
           <div className="flex flex-col items-center mb-12">
             <img 
               src="/images/aws-logo.png" 
-              alt="AWS Student Community Day Lahore" 
+              alt="AWS Student Community Day Peshawar" 
               className="mb-6 rounded-none border-[3px] border-white bg-white object-contain px-3 py-1 h-[50px] w-auto"
             />
             <p className="font-body text-gray-400 text-center max-w-md">

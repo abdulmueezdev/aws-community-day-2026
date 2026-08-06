@@ -43,7 +43,7 @@ export function AdminSidebar({ isOpen, onClose }: { isOpen: boolean, onClose: ()
       `}>
         <div className="p-6 border-b-[3px] border-black flex items-center justify-between">
           <div>
-            <h1 className="font-heading text-2xl font-black">AWS CD</h1>
+            <h1 className="font-heading text-2xl font-black">AWS SCD</h1>
             <p className="text-sm font-bold text-gray-400 tracking-widest">CMS</p>
           </div>
         </div>

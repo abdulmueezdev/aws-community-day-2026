@@ -1,3 +1,35 @@
+import { useState, useCallback } from 'react';
+
+const AUTH_KEY = 'admin_auth';
+
 export function useAdminAuth() {
-  return { isAuthenticated: true, login: (..._args: any[]) => true, logout: () => {} };
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
+    try {
+      return localStorage.getItem(AUTH_KEY) === 'true';
+    } catch {
+      return false;
+    }
+  });
+
+  const login = useCallback((..._args: unknown[]): boolean => {
+    try {
+      localStorage.setItem(AUTH_KEY, 'true');
+      setIsAuthenticated(true);
+      return true;
+    } catch {
+      return false;
+    }
+  }, []);
+
+  const logout = useCallback(() => {
+    try {
+      localStorage.removeItem(AUTH_KEY);
+      setIsAuthenticated(false);
+      window.location.href = '/admin/login';
+    } catch {
+      // silent fail
+    }
+  }, []);
+
+  return { isAuthenticated, login, logout };
 }

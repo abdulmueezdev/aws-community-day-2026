@@ -20,7 +20,7 @@ export function Organizers() {
           Meet The Team
         </h2>
         <p className="font-body text-lg text-textSecondary mb-16 max-w-2xl mx-auto">
-          The passionate individuals working behind the scenes to make AWS Student Community Day Lahore a reality.
+          Meet the dedicated team working behind the scenes to make AWS Student Community Day Peshawar a reality.
         </p>
 
         <CardFanCarousel organizers={visibleOrganizers} />
