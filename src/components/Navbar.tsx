@@ -27,7 +27,7 @@ export function Navbar() {
           <img 
             src="/images/aws-logo.png" 
             alt="AWS Student Community Day Peshawar" 
-            className="rounded-none border-[3px] border-black shadow-neo-sm bg-white object-contain px-3 py-1 h-12 w-auto" 
+            className="rounded-none border-[3px] border-white shadow-neo-sm object-contain h-11 w-auto" 
           />
         </div>
 
