@@ -25,11 +25,18 @@ export function Footer() {
           
           {/* Logo and Tagline */}
           <div className="flex flex-col items-center mb-12">
-            <img 
-              src="/images/aws-logo.png" 
-              alt="AWS Student Community Day Peshawar" 
-              className="mb-6 rounded-none border-[3px] border-gray-700 object-contain h-[45px] w-auto"
-            />
+            <div className="flex items-center gap-4 mb-6">
+              <img 
+                src="/images/aws-logo-simple.png" 
+                alt="AWS" 
+                className="rounded-none border-[3px] border-gray-700 bg-white object-contain px-2 py-1 h-[45px] w-auto"
+              />
+              <img 
+                src="/images/aws-logo.png" 
+                alt="AWS Student Community Day Peshawar" 
+                className="rounded-none border-[3px] border-gray-700 object-contain h-[45px] w-auto"
+              />
+            </div>
             <p className="font-body text-gray-400 text-center max-w-md">
               {settings.seoDescription}
             </p>
