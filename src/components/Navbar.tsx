@@ -27,7 +27,7 @@ export function Navbar() {
           <img 
             src="/images/aws-logo-navbar.png" 
             alt="AWS Student Builder Group FAST PWR" 
-            className="h-11 w-auto"
+            className="h-14 w-auto"
           />
         </div>
 
