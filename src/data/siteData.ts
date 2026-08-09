@@ -102,7 +102,7 @@ export const defaultSiteData: SiteData = {
     venueAddress: "National University of Computer & Emerging Sciences - FAST Peshawar Campus",
     venueCity: "Peshawar",
     venueProvince: "KPK",
-    venuePostalCode: "25000",
+    venuePostalCode: "25100",
     venueCountry: "Pakistan",
     venueMapEmbedUrl: "https://maps.google.com/maps?q=National+University+of+Computer+%26+Emerging+Sciences+-+FAST+Peshawar+Campus,+Peshawar,+Pakistan&t=&z=16&ie=UTF8&iwloc=&output=embed",
     venueLatitude: 33.980304,
