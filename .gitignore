@@ -22,3 +22,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Workflow and Environment files
+.env
+.env.local
+.env.*.local
+AI_memory.md
+CONTEXT.md
+STATE.md
+PRD.md
