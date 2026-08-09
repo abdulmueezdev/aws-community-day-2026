@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 };
 
 interface StaggerItemProps {
@@ -16,7 +16,7 @@ export function StaggerItem({ children, className }: StaggerItemProps) {
   if (shouldReduceMotion) return <div className={className}>{children}</div>;
 
   return (
-    <motion.div className={className} variants={itemVariants}>
+    <motion.div className={className} variants={itemVariants} style={{ willChange: 'transform, opacity' }}>
       {children}
     </motion.div>
   );

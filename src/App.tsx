@@ -70,7 +70,7 @@ function App() {
         <Routes>
         {/* Public Site */}
         <Route path="/" element={
-          <ReactLenis root options={{ lerp: 0.1, smoothWheel: true }}>
+          <ReactLenis root options={{ lerp: 0.08, smoothWheel: true }}>
             <div className="min-h-screen bg-background font-body text-textPrimary">
               <Navbar />
               <main>

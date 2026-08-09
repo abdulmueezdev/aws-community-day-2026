@@ -5,7 +5,7 @@ const containerVariants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+    transition: { staggerChildren: 0.08, delayChildren: 0.2 },
   },
 };
 
@@ -25,6 +25,7 @@ export function StaggerContainer({ children, className }: StaggerContainerProps)
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, margin: '-100px' }}
+      style={{ willChange: 'opacity' }}
     >
       {children}
     </motion.div>
