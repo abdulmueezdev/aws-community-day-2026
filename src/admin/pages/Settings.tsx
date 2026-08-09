@@ -65,7 +65,7 @@ export function Settings() {
             <h3 className="font-heading text-2xl font-black mb-6 uppercase">Social Links</h3>
             <div className="flex flex-col gap-4">
               <NeoInput 
-                label="Twitter" 
+                label="Meetup" 
                 value={settingsData.socialTwitter} 
                 onChange={(e) => handleUpdate('socialTwitter', e.target.value)} 
               />
