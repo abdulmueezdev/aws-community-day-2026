@@ -11,11 +11,17 @@ export function useAdminAuth() {
     }
   });
 
-  const login = useCallback((..._args: unknown[]): boolean => {
+  const login = useCallback((email: string, password: string): boolean => {
     try {
-      localStorage.setItem(AUTH_KEY, 'true');
-      setIsAuthenticated(true);
-      return true;
+      const correctPassword = import.meta.env.VITE_ADMIN_PASSWORD;
+      const correctEmail = 'admin@yahoo.com';
+      
+      if (email === correctEmail && password === correctPassword) {
+        localStorage.setItem(AUTH_KEY, 'true');
+        setIsAuthenticated(true);
+        return true;
+      }
+      return false;
     } catch {
       return false;
     }

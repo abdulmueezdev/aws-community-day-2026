@@ -16,7 +16,7 @@ export function Login() {
     e.preventDefault();
     setError('');
 
-    if (login(password)) {
+    if (login(email, password)) {
       navigate('/admin/dashboard');
     } else {
       setError('Invalid credentials');
