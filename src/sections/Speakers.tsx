@@ -1,6 +1,8 @@
 import { useSiteData } from '../context/SiteDataContext';
 import type { Speaker } from '../data/siteData';
 import { ScrollReveal } from '../components/ScrollReveal';
+import { StaggerContainer } from '../components/StaggerContainer';
+import { StaggerItem } from '../components/StaggerItem';
 
 export function Speakers() {
   const { siteData } = useSiteData();
@@ -13,10 +15,10 @@ export function Speakers() {
   return (
     <section id="speakers" className="pb-24 px-6 bg-tertiary border-b-[3px] border-black">
       <div className="max-w-7xl mx-auto pt-20">
-        <ScrollReveal delay={0}>
-          {/* Panelists */}
-          {panelSpeakers.length > 0 && (
-            <div className="mb-12">
+        {/* Panelists */}
+        {panelSpeakers.length > 0 && (
+          <div className="mb-12">
+            <ScrollReveal>
               <div className="flex items-center gap-3 mb-4 border-b-[3px] border-black pb-2">
                 <div className="w-8 h-8 bg-secondary border-[2px] border-black shadow-neo-sm flex items-center justify-center flex-shrink-0">
                   <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -28,15 +30,21 @@ export function Speakers() {
                 </div>
                 <h3 className="font-heading font-black text-2xl uppercase">Panelists</h3>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                {panelSpeakers.map(speaker => <SpeakerCard key={speaker.id} speaker={speaker} />)}
-              </div>
-            </div>
-          )}
+            </ScrollReveal>
+            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {panelSpeakers.map(speaker => (
+                <StaggerItem key={speaker.id}>
+                  <SpeakerCard speaker={speaker} />
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+        )}
 
-          {/* Workshop Speakers */}
-          {workshopSpeakers.length > 0 && (
-            <div className="mb-12">
+        {/* Workshop Speakers */}
+        {workshopSpeakers.length > 0 && (
+          <div className="mb-12">
+            <ScrollReveal>
               <div className="flex items-center gap-3 mb-4 border-b-[3px] border-black pb-2">
                 <div className="w-8 h-8 bg-primary border-[2px] border-black shadow-neo-sm flex items-center justify-center flex-shrink-0">
                   <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -45,15 +53,21 @@ export function Speakers() {
                 </div>
                 <h3 className="font-heading font-black text-2xl uppercase">Workshop Speakers</h3>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                {workshopSpeakers.map(speaker => <SpeakerCard key={speaker.id} speaker={speaker} />)}
-              </div>
-            </div>
-          )}
+            </ScrollReveal>
+            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {workshopSpeakers.map(speaker => (
+                <StaggerItem key={speaker.id}>
+                  <SpeakerCard speaker={speaker} />
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+        )}
 
-          {/* Keynote Speakers */}
-          {keynoteSpeakers.length > 0 && (
-            <div className="mb-12">
+        {/* Keynote Speakers */}
+        {keynoteSpeakers.length > 0 && (
+          <div className="mb-12">
+            <ScrollReveal>
               <div className="flex items-center gap-3 mb-4 border-b-[3px] border-black pb-2">
                 <div className="w-8 h-8 bg-tertiary border-[2px] border-black shadow-neo-sm flex items-center justify-center flex-shrink-0">
                   <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -62,13 +76,16 @@ export function Speakers() {
                 </div>
                 <h3 className="font-heading font-black text-2xl uppercase">Keynote Speakers</h3>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                {keynoteSpeakers.map(speaker => <SpeakerCard key={speaker.id} speaker={speaker} />)}
-              </div>
-            </div>
-          )}
-        </ScrollReveal>
-
+            </ScrollReveal>
+            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {keynoteSpeakers.map(speaker => (
+                <StaggerItem key={speaker.id}>
+                  <SpeakerCard speaker={speaker} />
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+        )}
       </div>
     </section>
   );
