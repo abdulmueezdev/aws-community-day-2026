@@ -92,13 +92,15 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
         </a>
       )}
       <div className="relative w-full h-[180px] md:h-[200px] border-b-[3px] border-black bg-gray-100 overflow-hidden">
-        <img 
-          src={speaker.photoUrl} 
-          alt={speaker.name} 
-          width="400"
-          height="400"
-          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
-        />
+        {speaker.photoUrl && (
+          <img 
+            src={speaker.photoUrl} 
+            alt={speaker.name} 
+            width="400"
+            height="400"
+            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+          />
+        )}
       </div>
       <div className="p-3 flex-grow flex flex-col justify-between rounded-none">
         <div className="flex flex-col h-full justify-between">

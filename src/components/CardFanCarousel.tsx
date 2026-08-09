@@ -99,14 +99,16 @@ export function CardFanCarousel({ organizers }: CardFanCarouselProps) {
             >
               <NeoCard className="flex flex-col text-center p-0 overflow-hidden bg-white">
                 <div className="w-full h-[120px] md:h-[140px] border-b-[3px] border-black bg-gray-100">
-                  <img 
-                    src={organizer.photoUrl} 
-                    alt={organizer.name}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(organizer.name)}&background=random&size=200`;
-                    }}
-                  />
+                  {organizer.photoUrl && (
+                    <img 
+                      src={organizer.photoUrl} 
+                      alt={organizer.name}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(organizer.name)}&background=random&size=200`;
+                      }}
+                    />
+                  )}
                 </div>
                 <div className="p-3">
                   <h3 className="font-heading font-bold text-base uppercase">{organizer.name}</h3>

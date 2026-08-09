@@ -40,14 +40,16 @@ export function PartnerMarquee({ partners }: PartnerMarqueeProps) {
             >
               {/* Image */}
               <div className="w-full h-[100px] md:h-[120px] border-b-[3px] border-black bg-gray-100 flex items-center justify-center overflow-hidden">
-                <img 
-                  src={partner.logoUrl} 
-                  alt={partner.name}
-                  className="w-full h-full object-cover"
-                  width={220}
-                  height={120}
-                  loading="lazy"
-                />
+                {partner.logoUrl && (
+                  <img 
+                    src={partner.logoUrl} 
+                    alt={partner.name}
+                    className="w-full h-full object-cover"
+                    width={220}
+                    height={120}
+                    loading="lazy"
+                  />
+                )}
               </div>
               
               {/* Text — hidden ONLY for the very first card */}
