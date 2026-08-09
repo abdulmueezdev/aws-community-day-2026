@@ -209,37 +209,37 @@ export const defaultSiteData: SiteData = {
   partners: [
     {
       id: "partner-1",
-      name: "LBIS-TECH",
-      tagline: "Learn-Innovate-Lead",
+      name: "Name",
+      tagline: "Description",
       websiteUrl: "#",
-      logoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=LBIS-TECH",
+      logoUrl: "",
       displayOrder: 1,
       isVisible: true
     },
     {
       id: "partner-2",
-      name: "invozone",
-      tagline: "",
+      name: "Name",
+      tagline: "Description",
       websiteUrl: "#",
-      logoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=invozone",
+      logoUrl: "",
       displayOrder: 2,
       isVisible: true
     },
     {
       id: "partner-3",
-      name: "TBD",
-      tagline: "",
+      name: "Name",
+      tagline: "Description",
       websiteUrl: "#",
-      logoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=Partner",
+      logoUrl: "",
       displayOrder: 3,
       isVisible: true
     },
     {
       id: "partner-4",
-      name: "HM Photography",
-      tagline: "",
+      name: "Name",
+      tagline: "Description",
       websiteUrl: "#",
-      logoUrl: "https://ui-avatars.com/api/?background=random&size=400&name=HM+Photography",
+      logoUrl: "",
       displayOrder: 4,
       isVisible: true
     }
