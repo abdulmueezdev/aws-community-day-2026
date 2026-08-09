@@ -300,35 +300,35 @@ export const defaultSiteData: SiteData = {
     {
       id: "faq-1",
       question: "Is the event free and open for all students?",
-      answer: "Yes, the event is entirely free and open to all university students.",
+      answer: "Yes, the event is completely free for all registered students.",
       displayOrder: 1,
       isPublished: true
     },
     {
       id: "faq-2",
-      question: "Will there be refreshments provided?",
-      answer: "Yes, refreshments will be provided to all registered attendees.",
+      question: "Do I need to bring my own laptop?",
+      answer: "It is recommended to bring a laptop for hands-on workshop sessions.",
       displayOrder: 2,
       isPublished: true
     },
     {
       id: "faq-3",
-      question: "Is there a strict schedule for the event?",
-      answer: "Yes, the event schedule will be strictly followed. Sessions run from 10AM to 4PM.",
+      question: "Will certificates be provided?",
+      answer: "Yes, participation certificates will be provided to all attendees.",
       displayOrder: 3,
       isPublished: true
     },
     {
       id: "faq-4",
-      question: "Does registration guarantee a seat?",
-      answer: "Registration acts as an RSVP, but seats are limited and will be given on a first-come, first-served basis on the event day.",
+      question: "Is there a dress code?",
+      answer: "There is no specific dress code. Come in comfortable casual attire.",
       displayOrder: 4,
       isPublished: true
     },
     {
       id: "faq-5",
-      question: "Can I register on-spot at the venue?",
-      answer: "On-spot registration is not guaranteed and depends entirely on available capacity. Pre-registration is highly recommended.",
+      question: "Who can I contact for more information?",
+      answer: "You can reach out to our support team via email for any inquiries.",
       displayOrder: 5,
       isPublished: true
     }
