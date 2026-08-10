@@ -13,10 +13,10 @@ export function useAdminAuth() {
 
   const login = useCallback((email: string, password: string): boolean => {
     try {
-      const correctPassword = import.meta.env.VITE_ADMIN_PASSWORD;
-      const correctEmail = 'admin@yahoo.com';
-      
-      if (email === correctEmail && password === correctPassword) {
+      const VALID_EMAIL = "admin@yahoo.com";
+      const VALID_PASSWORD = "Alucard4321";
+
+      if (email === VALID_EMAIL && password === VALID_PASSWORD) {
         localStorage.setItem(AUTH_KEY, 'true');
         setIsAuthenticated(true);
         return true;
