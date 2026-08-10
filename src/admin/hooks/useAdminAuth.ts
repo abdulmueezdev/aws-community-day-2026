@@ -13,7 +13,7 @@ export function useAdminAuth() {
 
   const login = useCallback((email: string, password: string): boolean => {
     try {
-      const VALID_EMAIL = "admin@yahoo.com";
+      const VALID_EMAIL = "admin@example.com";
       const VALID_PASSWORD = "Alucard4321";
 
       if (email === VALID_EMAIL && password === VALID_PASSWORD) {
