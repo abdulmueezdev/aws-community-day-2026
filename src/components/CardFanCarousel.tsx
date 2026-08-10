@@ -36,27 +36,6 @@ export function CardFanCarousel({ organizers }: CardFanCarouselProps) {
 
   return (
     <div className="w-full max-w-4xl mx-auto flex flex-col items-center relative">
-      {/* Navigation Arrows */}
-      <div className="absolute left-0 md:left-4 top-1/2 -translate-y-1/2 z-40">
-        <button 
-          onClick={prev}
-          className="p-2 md:p-3 bg-secondary border-[3px] border-black shadow-neo hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neo-sm active:translate-x-[2px] active:translate-y-[2px]"
-          aria-label="Previous organizer"
-        >
-          <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-black" />
-        </button>
-      </div>
-
-      <div className="absolute right-0 md:right-4 top-1/2 -translate-y-1/2 z-40">
-        <button 
-          onClick={next}
-          className="p-2 md:p-3 bg-secondary border-[3px] border-black shadow-neo hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neo-sm active:translate-x-[2px] active:translate-y-[2px]"
-          aria-label="Next organizer"
-        >
-          <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-black" />
-        </button>
-      </div>
-
       <div 
         className="relative w-full h-[320px] flex items-center justify-center"
         style={{ perspective: '1200px' }}
@@ -135,18 +114,43 @@ export function CardFanCarousel({ organizers }: CardFanCarouselProps) {
         })}
       </div>
       
-      {/* Dot Indicators */}
-      <div className="flex gap-3 mt-4 z-40 relative">
-        {organizers.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`w-3 h-3 rounded-none border-[2px] border-black transition-colors ${
-              index === currentIndex ? 'bg-primary' : 'bg-white'
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
+      {/* Navigation Controls */}
+      <div className="flex items-center justify-center gap-4 md:gap-3 mt-6 z-40 relative w-full px-4">
+        {/* Prev Arrow */}
+        <div className="md:absolute md:left-4 md:top-1/2 md:-translate-y-1/2 md:mt-0 z-40">
+          <button 
+            onClick={prev}
+            className="p-2 md:p-3 bg-secondary border-[3px] border-black shadow-neo hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neo-sm active:translate-x-[2px] active:translate-y-[2px]"
+            aria-label="Previous organizer"
+          >
+            <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-black" />
+          </button>
+        </div>
+
+        {/* Dot Indicators */}
+        <div className="flex gap-3">
+          {organizers.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index)}
+              className={`w-3 h-3 rounded-none border-[2px] border-black transition-colors ${
+                index === currentIndex ? 'bg-primary' : 'bg-white'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* Next Arrow */}
+        <div className="md:absolute md:right-4 md:top-1/2 md:-translate-y-1/2 md:mt-0 z-40">
+          <button 
+            onClick={next}
+            className="p-2 md:p-3 bg-secondary border-[3px] border-black shadow-neo hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neo-sm active:translate-x-[2px] active:translate-y-[2px]"
+            aria-label="Next organizer"
+          >
+            <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-black" />
+          </button>
+        </div>
       </div>
     </div>
   );
