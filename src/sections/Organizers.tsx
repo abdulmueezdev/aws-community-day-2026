@@ -26,7 +26,7 @@ export function Organizers() {
           </p>
         </ScrollReveal>
 
-        <ScrollReveal delay={0.2}>
+        <ScrollReveal delay={0.2} className="w-full">
           <CardFanCarousel organizers={visibleOrganizers} />
         </ScrollReveal>
 
